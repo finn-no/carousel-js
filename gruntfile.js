@@ -3,7 +3,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     uglify: {
       build: {
-        src: ['src/finn/<%=pkg.name%>/**/*.js'],
+        src: ['src/finn/core.js', 'src/finn/elementBuilder.js', 'src/finn/<%=pkg.name%>/**/*.js'],
         dest: 'dist/<%= pkg.name %>-<%=pkg.version%>.min.js'
       }
     },
