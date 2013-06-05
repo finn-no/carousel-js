@@ -50,15 +50,16 @@ That's it! You can use this same setup for things other than images, you can loo
 
 The carousel consists of many components which can easily be composed together to give the carousel different behaviours. Below are some samples, the rest is in the source code.
 
-### Lazy loading images
-Use the lazyImageList component insted of the element list.
+## More sample usages
 
-    var imageList = carousel.lazyImageList.create(sourceImageList);
+There are a few samples in the [samples](samples/) folder which shows how you can combine the different components to fit your requirements.
 
-### Adding looping behaviour
-Use the loopingController to make the carousel go round and round
+### Samples in the wild
+Feel free to add your samples to this section or let us know if you use it. 
 
-	var controller = carousel.loopingController.create(imageList);
+* [Show cases module](http://www.finn.no/finn/torget/partnerinfo) uses the carousel to provide users with the option to view success stories (towards the bottom)
+* [Simple gallery](http://www.finn.no/bedrift/svendsen-s-glass-service-as-1137850/album/7994) just a simple image gallery with keyboard and touch navigation
+* [Gallery with thumbnail strip](http://www.finn.no/finn/car/used/viewimage?finnkode=41884971) gallery with a simple thumbnail strip
 
 # Building the source
 Working with the carousel all you need to build it is to have [Grunt](http://gruntjs.com/) installed and then just run the simple command: 
