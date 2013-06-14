@@ -70,7 +70,7 @@ This runs tests and puts a new package in your local dist folder, ready to use.
 
 ## Running tests
 Currently all tests are run using [JsTestDriver](https://code.google.com/p/js-test-driver/). Tests use the [Buster assertion library](http://docs.busterjs.org/en/latest/modules/buster-assertions/). 
-In order to run the tests you must have Grunt installed and make sure you have the [Grunt JsTestDriver plugin](https://github.com/rickyclegg/grunt-jstestdriver) installed. The configuration is aleady in the project grunt file.
+In order to run the tests you must have Grunt installed and make sure you have the [Grunt JsTestDriver plugin](https://github.com/rickyclegg/grunt-jstestdriver) installed. The configuration is already in the project grunt file.
 
 To run the tests all you need to do is this:
 
@@ -86,11 +86,11 @@ There are some dependencies, but we are looking to remove or replace the jQuery 
 
 * [Underscore](http://underscorejs.org/)
 * [Buster core](https://github.com/busterjs/buster-core/)
-* [Buster-evet-emitter](https://github.com/busterjs/buster-core/blob/master/lib/buster-event-emitter.js)
+* [Buster-event-emitter](https://github.com/busterjs/buster-core/blob/master/lib/buster-event-emitter.js)
 * [jQuery 1.7 and up](http://jquery.com)
 
 
-There are some components which rely on jQuery, but we are working to get rid of those as soon as possiblle
+There are some components which rely on jQuery, but we are working to get rid of those as soon as possible.
 
 # Contributors
 
