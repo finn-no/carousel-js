@@ -1,7 +1,7 @@
 # Carousel widget
 
 This is a generic carousel widget which can be used with any content. Highly customizable and extendable.
-It works in any browser on any device. 
+It works in any browser on any device.
 
 Your pull requests are more than welcome and we're happy for any contribution.
 
@@ -9,42 +9,48 @@ Your pull requests are more than welcome and we're happy for any contribution.
 Below is a sample of how you create a simple image carousel.
 Add the script to the bottom of the page
 
-	<script src="carousel-1.0.0.min.js"></script>
+```html
+<script src="carousel-1.0.0.min.js"></script>
+```
 
-Then add markup for listing the images. 
+Then add markup for listing the images.
 
-	<div>
-	    <div id="imageList">
-	    	<img src="" alt="">
-	    	<img src="" alt="">
-	    </div>
-	    <div id="prevNextNavigation" class="nextprev">
-	        <a class="prev" title="Previous"><span class="hidden">Previous</span></a>
-	        <a class="next" title="Next"><span class="hidden">Next</span></a>
-	    </div>
-	</div>
+```html
+<div>
+    <div id="imageList">
+        <img src="" alt="">
+        <img src="" alt="">
+    </div>
+    <div id="prevNextNavigation" class="nextprev">
+        <a class="prev" title="Previous"><span class="hidden">Previous</span></a>
+        <a class="next" title="Next"><span class="hidden">Next</span></a>
+    </div>
+</div>
+```
 
 Now let's wire up the JS code required to make this thing work. This should be in a separate file loaded after the carousel lib.
 
-	(function(carousel){
-		var sourceImageList = document.getElementById("imageList");
-	    var imageList = carousel.elementList.create(sourceImageList);
-	    var controller = carousel.controller.create(imageList);
+```js
+(function(carousel){
+    var sourceImageList = document.getElementById("imageList");
+    var imageList = carousel.elementList.create(sourceImageList);
+    var controller = carousel.controller.create(imageList);
 
-	    var imageProjector = carousel.animatedProjector.create(controller, imageList, {
-	           duration: 500,
-	           animator: carousel.horizontalSlider
-	       });
-	    var imageCarousel = imageProjector.buildCarousel();
-	    carousel.setupClickNavigation(
-	        controller,
-	        imageList,
-	        document.getElementById("prevNextNavigation")
-	    );
-	    carousel.setupKeyboardNavigation(controller);
-		    carousel.setupTouchNavigation(controller, imageCarousel);
-	    sourceImageList.style.display = "none";
-	}(FINN.carousel));
+    var imageProjector = carousel.animatedProjector.create(controller, imageList, {
+        duration: 500,
+        animator: carousel.horizontalSlider
+    });
+    var imageCarousel = imageProjector.buildCarousel();
+    carousel.setupClickNavigation(
+        controller,
+        imageList,
+        document.getElementById("prevNextNavigation")
+    );
+    carousel.setupKeyboardNavigation(controller);
+    carousel.setupTouchNavigation(controller, imageCarousel);
+    sourceImageList.style.display = "none";
+}(FINN.carousel));
+```
 
 That's it! You can use this same setup for things other than images, you can loop through any type of DOM node. Wether it's an image, canvas, svg or whatever.
 
@@ -55,42 +61,44 @@ The carousel consists of many components which can easily be composed together t
 There are a few samples in the [samples](samples/) folder which shows how you can combine the different components to fit your requirements.
 
 ### Samples in the wild
-Feel free to add your samples to this section or let us know if you use it. 
+Feel free to add your samples to this section or let us know if you use it.
 
 * [Show cases module](http://www.finn.no/finn/torget/partnerinfo) uses the carousel to provide users with the option to view success stories (towards the bottom)
 * [Simple gallery](http://www.finn.no/bedrift/svendsen-s-glass-service-as-1137850/album/7994) just a simple image gallery with keyboard and touch navigation
 * [Gallery with thumbnail strip](http://www.finn.no/finn/car/used/viewimage?finnkode=41884971) gallery with a simple thumbnail strip
 
 # Building the source
-Working with the carousel all you need to build it is to have [Grunt](http://gruntjs.com/) installed and then just run the simple command: 
+Working with the carousel all you need to build it is to have [Grunt](http://gruntjs.com/) installed and then just run the simple command:
 
-	grunt
+```sh
+grunt
+```
 
 This runs tests and puts a new package in your local dist folder, ready to use.
 
 ## Running tests
-Currently all tests are run using [JsTestDriver](https://code.google.com/p/js-test-driver/). Tests use the [Buster assertion library](http://docs.busterjs.org/en/latest/modules/buster-assertions/). 
+
+Currently all tests are run using [JsTestDriver](https://code.google.com/p/js-test-driver/). Tests use the [Buster assertion library](http://docs.busterjs.org/en/latest/modules/buster-assertions/).
 In order to run the tests you must have Grunt installed and make sure you have the [Grunt JsTestDriver plugin](https://github.com/rickyclegg/grunt-jstestdriver) installed. The configuration is already in the project grunt file.
 
 To run the tests all you need to do is this:
 
-	java -jar node_modules/grunt-jstestdriver/lib/jstestdriver.jar --port 5555
-	grunt jstestdriver
+```sh
+$ java -jar node_modules/grunt-jstestdriver/lib/jstestdriver.jar --port 5555
+$ grunt jstestdriver
+```
 
 # Component
 
-The carousel package contains numerous components which can be packaged together to give you exactly the kind of carousel widget you want. 
+The carousel package contains numerous components which can be packaged together to give you exactly the kind of carousel widget you want.
 
 # Dependencies
-There are some dependencies, but we are looking to remove or replace the jQuery and Buster dependencies.
 
 * [Underscore](http://underscorejs.org/)
-* [Buster core](https://github.com/busterjs/buster-core/)
-* [Buster-event-emitter](https://github.com/busterjs/buster-core/blob/master/lib/buster-event-emitter.js)
+* [Bane](https://github.com/busterjs/bane/blob/master/lib/bane.js)
 * [jQuery 1.7 and up](http://jquery.com)
 
-
-There are some components which rely on jQuery, but we are working to get rid of those as soon as possible.
+Some components rely on jQuery, we are working to lose those as soon as possible.
 
 # Contributors
 

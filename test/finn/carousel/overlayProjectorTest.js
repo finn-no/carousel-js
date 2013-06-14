@@ -13,7 +13,7 @@
                 }
             };
             this.div = document.createElement("div");
-            this.controller = buster.eventEmitter.create();
+            this.controller = bane.createEventEmitter();
             this.projector = C.overlayProjector.create(this.controller, this.slider, this.div);
         },
 
