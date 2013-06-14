@@ -16,7 +16,7 @@
                     return 10;
                 }
             };
-            this.controller = buster.eventEmitter.create();
+            this.controller = bane.createEventEmitter();
             this.projector = C.animatedProjector.create(this.controller, this.slider, {
                 animator: this.spy()
             });

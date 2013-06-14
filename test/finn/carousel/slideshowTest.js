@@ -5,7 +5,7 @@
     testCase("Slideshow", sinon.testCase({
         setUp: function () {
             this.next = sinon.spy();
-            this.controller = buster.eventEmitter.create();
+            this.controller = bane.createEventEmitter();
             this.controller.next = this.next;
             this.clock = sinon.useFakeTimers();
         },

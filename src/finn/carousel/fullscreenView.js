@@ -1,7 +1,7 @@
 /*! carousel-js - 2013-06-14. Copyright (c) 2013 FINN.no AS - http://finn.no/; Licensed MIT */
 FINN.carousel = FINN.carousel || {};
 
-(function(C,$, B){
+(function(C,$){
     "use strict";
 
     C.hasFullscreenSupport = function(){
@@ -67,4 +67,4 @@ FINN.carousel = FINN.carousel || {};
             docElm.webkitRequestFullScreen();
         }
     }
-}(FINN.carousel, jQuery, buster));
+}(FINN.carousel, jQuery));

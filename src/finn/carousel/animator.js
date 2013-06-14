@@ -1,6 +1,6 @@
 FINN.carousel = FINN.carousel || {};
 
-(function (C, $, B) {
+(function (C, $) {
     "use strict";
     
     C.animator = {
@@ -30,4 +30,4 @@ FINN.carousel = FINN.carousel || {};
             }
         }
     };
-}(FINN.carousel, jQuery, buster));
+}(FINN.carousel, jQuery));

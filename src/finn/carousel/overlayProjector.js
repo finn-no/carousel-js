@@ -1,5 +1,5 @@
 /*! carousel-js - 2013-06-14. Copyright (c) 2013 FINN.no AS - http://finn.no/; Licensed MIT */
-(function (C, B) {
+(function (C) {
     "use strict";
     
     C.overlayProjector = {
@@ -12,7 +12,8 @@
         },
 
         buildCarousel: function () {
-            this.controller.on("show", B.bind(this, "show"));
+            var self = this;
+            this.controller.on("show", function () { return self.show.apply(self, arguments); });
             this.show(0);
             return this.view;
         },
@@ -25,4 +26,4 @@
             });
         }
     };
-}(FINN.carousel, buster));
+}(FINN.carousel));

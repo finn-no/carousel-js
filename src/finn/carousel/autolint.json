@@ -17,7 +17,7 @@
         "regexp": false,
         "onevar": false,
         "predef": [
-            "jQuery", "FINN", "_", "buster"
+            "jQuery", "FINN", "_"
         ]
     }
 }

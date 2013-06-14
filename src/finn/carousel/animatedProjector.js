@@ -1,7 +1,7 @@
 /*! carousel-js - 2013-06-14. Copyright (c) 2013 FINN.no AS - http://finn.no/; Licensed MIT */
 FINN.carousel = FINN.carousel || {};
 
-(function (C, $, B) {
+(function (C, $) {
     "use strict";
 
     var div = FINN.elementBuilder("div");
@@ -15,37 +15,41 @@ FINN.carousel = FINN.carousel || {};
                 currentId: 0,
                 queue: []
             });
-            controller.on("show", B.bind(instance, "show"));
+            controller.on("show", function () { return instance.show.apply(instance, arguments); });
             return instance;
         },
 
         buildCarousel: function (callback) {
             var carousel = this.carousel = div({ className: "carousel" });
-            this.data.get(0, B.bind(this, function (element) {
-                this.mainFrame = div({ className: "frame" });
-                this.mainFrame.appendChild(element);
-                this.viewport = div({ className: "viewport" }, this.mainFrame);
-                this.viewport.style.position = "relative";
-                this.viewport.style.overflow = "hidden";
-                carousel.appendChild(this.viewport);
+            var self = this;
+            this.data.get(0, function (element) {
+                self.mainFrame = div({ className: "frame" });
+                self.mainFrame.appendChild(element);
+                self.viewport = div({ className: "viewport" }, self.mainFrame);
+                self.viewport.style.position = "relative";
+                self.viewport.style.overflow = "hidden";
+                carousel.appendChild(self.viewport);
                 if (typeof callback === "function") { callback(carousel); }
-            }));
+            });
             return carousel;
         },
 
         show: function (index) {
             if (!this.isAnimating() && index === this.currentId) { return; }
-            var animComplete = B.bind(this, "animationComplete", index);
+            var self = this;
+            var animComplete = function () {
+                return self.animationComplete.apply(self, [index].concat([].slice.call(arguments)));
+            };
             this.currTarget = index;
 
             if (index === this.currentId) {
                 return this.animationFrame().revertAnimation(animComplete);
             }
 
-            this.data.get(index, B.bind(this, function (element) {
-                this.addElementToFrame(element, index);
-                this.animationFrame().animate(animComplete);
-            }));
+            this.data.get(index, function (element) {
+                self.addElementToFrame(element, index);
+                self.animationFrame().animate(animComplete);
+            });
         },
 
         isAnimating: function () {
@@ -102,4 +106,4 @@ FINN.carousel = FINN.carousel || {};
             this.mainFrame.firstChild.innerHTML = content;
         }
     };
-}(FINN.carousel, jQuery, buster));
+}(FINN.carousel, jQuery));
