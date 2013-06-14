@@ -1,4 +1,5 @@
 (function (C) {
+    "use strict";
     testCase("IndexDisplayerTest", sinon.testCase({
         setUp: function () {
             this.list = {
@@ -13,7 +14,7 @@
                 list: this.list,
                 controller: this.controller,
                 root: this.root
-            };            
+            };
         },
 
         "test should whine if given no params": function () {

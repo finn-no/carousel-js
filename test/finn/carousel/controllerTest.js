@@ -1,4 +1,5 @@
 (function (carousel) {
+    "use strict";
     testCase("ControllerTest", sinon.testCase({
         setUp: function () {
             this.collection = { contains: this.stub().returns(true) };

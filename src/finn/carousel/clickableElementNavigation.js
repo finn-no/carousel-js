@@ -1,4 +1,6 @@
 (function (C) {
+    "use strict";
+    
     C.setupClickableElementNavigation = function (controller, root, element, selector, getElementIndexOverride) {
         var selected = selector || "selectedElement";
 

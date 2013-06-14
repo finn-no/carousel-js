@@ -1,4 +1,5 @@
 (function (carousel) {
+    "use strict";
     var C = FINN.carousel || {};
     testCase("Slideshow", sinon.testCase({
         setUp: function () {

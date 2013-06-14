@@ -1,4 +1,6 @@
+/* global FINN */
 (function (C) {
+    "use strict";
 
     function getPosition(e) {
         return {

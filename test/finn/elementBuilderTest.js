@@ -1,4 +1,6 @@
 (function (elementBuilder) {
+    "use strict";
+    
     var div = elementBuilder("div");
     var p = elementBuilder("p");
 

@@ -1,4 +1,5 @@
 (function (C, $) {
+    "use strict";
 
     testCase("LazyImageListTest", sinon.testCase({
         setUp: function () {

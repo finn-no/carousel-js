@@ -1,4 +1,5 @@
 (function (C) {
+    "use strict";
     testCase("ClickNavigationTest", sinon.testCase({
         setUp: function () {
             /*:DOC element = <ol>

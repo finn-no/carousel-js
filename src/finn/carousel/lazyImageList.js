@@ -1,4 +1,5 @@
 (function (C, $) {
+    "use strict";
     function childAt(element, index) {
         return $(element).children().get(index);
     }

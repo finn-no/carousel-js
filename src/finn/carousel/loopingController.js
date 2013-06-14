@@ -1,6 +1,8 @@
 FINN.carousel = FINN.carousel || {};
 
 (function (C) {
+    "use strict";
+    
     C.loopingController = FINN.compose(C.controller, {
 
         show: function(id) {

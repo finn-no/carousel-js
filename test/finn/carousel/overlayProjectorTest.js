@@ -1,4 +1,5 @@
 (function (C) {
+    "use strict";
     var div = FINN.elementBuilder("div");
 
     testCase("OverlayProjectorTest", sinon.testCase({

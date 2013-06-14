@@ -1,6 +1,8 @@
 FINN.carousel = FINN.carousel || {};
 
 (function (C, $, B) {
+    "use strict";
+    
     var div = FINN.elementBuilder("div");
     var transition;
 

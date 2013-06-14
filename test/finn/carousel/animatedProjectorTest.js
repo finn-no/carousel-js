@@ -1,7 +1,9 @@
 (function (C) {
+    "use strict";
+
     var div = FINN.elementBuilder("div");
 
-    TestCase("AnimatedProjectorTest", sinon.testCase({
+    testCase("AnimatedProjectorTest", sinon.testCase({
         setUp: function () {
             this.slider = {
                 tagName: "div",

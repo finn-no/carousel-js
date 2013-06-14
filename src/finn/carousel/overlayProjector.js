@@ -1,4 +1,6 @@
 (function (C, B) {
+    "use strict";
+    
     C.overlayProjector = {
         create: function (controller, data, view) {
             return FINN.compose(this, {

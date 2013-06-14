@@ -1,6 +1,7 @@
 FINN.carousel = FINN.carousel || {};
 
-(function (C) {
+(function (C, _) {
+    "use strict";
 
     C.emptyList = {
         isBounded: false,
@@ -23,4 +24,4 @@ FINN.carousel = FINN.carousel || {};
         contains: function (index) { return false; },
         get: function (index, callback) {}
     };
-}(FINN.carousel));
+}(FINN.carousel, _));

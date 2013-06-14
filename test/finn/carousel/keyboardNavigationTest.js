@@ -1,4 +1,5 @@
 (function (C) {
+    "use strict";
 
     testCase("KeyboardNavigationTest", sinon.testCase({
         setUp: function () {

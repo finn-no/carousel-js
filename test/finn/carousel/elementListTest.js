@@ -1,4 +1,5 @@
 (function (C) {
+    "use strict";
     testCase("ElementListTest", sinon.testCase({
 
         setUp: function () {

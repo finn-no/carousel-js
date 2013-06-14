@@ -1,4 +1,5 @@
 (function (C) {
+    "use strict";
     testCase("ClickableElementNavigationTest", sinon.testCase({
         setUp: function () {
             /*:DOC thumbs = <div>

@@ -1,4 +1,5 @@
 (function (carousel, $) {
+    "use strict";
     testCase("LoopingControllerTest", sinon.testCase({
         setUp: function () {
             this.collection = carousel.elementList.create($('<div><img/><img/><img/></div>'));

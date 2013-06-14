@@ -1,4 +1,5 @@
 (function (C) {
+    "use strict";
     testCase("EmptyListTest", sinon.testCase({
 
         "test should create usable data object": function () {

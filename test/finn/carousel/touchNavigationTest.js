@@ -1,4 +1,5 @@
 (function (C) {
+    "use strict";
 
     function touchEvent(x, y) {
         var touches = [ { pageX: x, pageY: y || 100 } ];

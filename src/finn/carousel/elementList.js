@@ -1,6 +1,8 @@
 FINN.carousel = FINN.carousel || {};
 
 (function (C, $) {
+    "use strict";
+    
     function childAt(element, index) {
         if (index >= 0){
             return $(element).children().get(index);

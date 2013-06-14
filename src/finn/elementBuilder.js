@@ -1,4 +1,7 @@
-(function (F) {
+/*global FINN,jQuery,document */
+(function (F, $) {
+    "use strict";
+
     F.fragment = function () {
         var fragment = document.createDocumentFragment();
         var args = $.isArray(arguments[0]) ? arguments[0] : arguments;
@@ -18,8 +21,8 @@
 
             if (!attributes ||
                 attributes.tagName ||
-                attributes.nodeType == documentFragmentType ||
-                typeof attributes == "string") {
+                attributes.nodeType === documentFragmentType ||
+                typeof attributes === "string") {
                 sliceIndex = 0;
                 attrs = {};
             }
@@ -53,7 +56,7 @@
 
     builder.addContent = function (element, content) {
         for (var i = 0, l = content.length; i < l; ++i) {
-            if (typeof content[i] == "string") {
+            if (typeof content[i] === "string") {
                 element.appendChild(document.createTextNode(content[i]));
             } else {
                 element.appendChild(content[i]);
@@ -85,4 +88,4 @@
                    builder.addContent(div({ className: "bd" }),
                                       [].slice.call(arguments, 1)));
     };
-}(FINN));
+}(FINN, jQuery));

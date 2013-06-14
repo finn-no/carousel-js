@@ -1,7 +1,8 @@
 FINN.carousel = FINN.carousel || {};
 
 (function ($, C) {
-
+    "use strict";
+    
     C.setupClickNavigation =  function (controller, list, view) {
         var $next = $(view).find(".next");
         var $prev = $(view).find(".prev");

@@ -1,6 +1,10 @@
 FINN.carousel = FINN.carousel || {};
-
+/**
+ * WAAAAAARNING THIS WIDGET IS NOT COMPLETE, PLEASE DON'T USE IT!!
+ **/
 (function (C, $) {
+    "use strict";
+
     var centerIndex = 0;
     function isWebKitTransform(){
         return '-webkit-transform' in document.body.style;
@@ -32,7 +36,7 @@ FINN.carousel = FINN.carousel || {};
         var lastIndex = thumbnails.length-1;
         var last = thumbnails[lastIndex];
         $(thumbs).find(".thumbwrap").removeClass("selectedThumb");
-        if (isNext(previousIndex, index) || (index == 0 && previousIndex == lastIndex)){
+        if (isNext(previousIndex, index) || (index === 0 && previousIndex === lastIndex)){
             $(thumbs).append(first);
         } else {
             $(last).insertBefore(first);
@@ -57,8 +61,8 @@ FINN.carousel = FINN.carousel || {};
             left: posLeft*-1 + cWidth
         };
         $(thumbs).find(".thumbwrap").removeClass("selected");
-        if ((previousIndex == (thumbnails.length -1) && index == 0) ||
-            previousIndex == 0 && index == (thumbnails.length -1)){
+        if ((previousIndex === (thumbnails.length -1) && index === 0) ||
+            previousIndex === 0 && index === (thumbnails.length -1)){
             if (isWebKitTransform()) {
                 $("#thumbnails").css({
                     "-webkit-transition":"all 0.0s ease-in-out",

@@ -1,5 +1,6 @@
 (function (C, $) {
-
+    "use strict";
+    
     C.setupKeyboardNavigation = function (controller) {
         $(document).bind("keyup", function (e) {
             if (!$(e.target).is(":input")) {

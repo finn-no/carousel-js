@@ -1,6 +1,8 @@
 FINN.carousel = FINN.carousel || {};
 
 (function(C,$, B){
+    "use strict";
+
     C.hasFullscreenSupport = function(){
         var docElm = document.documentElement;
         if (docElm.requestFullscreen) {
@@ -46,7 +48,7 @@ FINN.carousel = FINN.carousel || {};
         $(document).bind("keyup", function (e) {
             if (e) {
                 console.log(e.which);
-                if (e.which == 70){
+                if (e.which === 70){
                     enterFullscreen();
                 }
             }
@@ -64,4 +66,4 @@ FINN.carousel = FINN.carousel || {};
             docElm.webkitRequestFullScreen();
         }
     }
-}(FINN.carousel, jQuery, buster))
+}(FINN.carousel, jQuery, buster));

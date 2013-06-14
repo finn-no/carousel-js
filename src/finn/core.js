@@ -1,8 +1,9 @@
 var FINN = FINN || {};
 (function(F){
+    "use strict";
 	if (typeof Object.create !== "function") {
         Object.create = function (obj) {
-            function Proxy(){};
+            function Proxy(){}
             Proxy.prototype = obj;
             return new Proxy();
         };
@@ -25,4 +26,4 @@ var FINN = FINN || {};
         }
         return instance;
     };
-}(FINN))
+}(FINN));

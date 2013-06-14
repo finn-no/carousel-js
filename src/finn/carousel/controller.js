@@ -1,6 +1,8 @@
 FINN.carousel = FINN.carousel || {};
 
 (function (C) {
+    "use strict";
+    
     C.controller = _.extend(buster.eventEmitter.create(), {
 
         create: function (seq) {
