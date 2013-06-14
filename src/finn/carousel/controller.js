@@ -3,7 +3,7 @@ FINN.carousel = FINN.carousel || {};
 
 (function (C) {
     "use strict";
-    C.controller = _.extend(buster.eventEmitter.create(), {
+    C.controller = bane.createEventEmitter({
 
         create: function (seq) {
             return FINN.compose(this, { seq: seq, currentId: 0 });

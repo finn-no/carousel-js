@@ -1,7 +1,7 @@
 /*! carousel-js - 2013-06-14. Copyright (c) 2013 FINN.no AS - http://finn.no/; Licensed MIT */
 FINN.carousel = FINN.carousel || {};
 
-(function (C, $, B) {
+(function (C, $) {
     "use strict";
     
     var div = FINN.elementBuilder("div");
@@ -135,10 +135,11 @@ FINN.carousel = FINN.carousel || {};
         },
 
         animationCallback: function (callback) {
-            return B.bind(this, function () {
-                callback(this.contentElement);
-                delete this.startPos;
-            });
+            var self = this;
+            return function () {
+                callback(self.contentElement);
+                delete self.startPos;
+            };
         },
 
         revertAnimation: function (cb) {
@@ -151,4 +152,4 @@ FINN.carousel = FINN.carousel || {};
             return this.direction === LEFT;
         }
     });
-}(FINN.carousel, jQuery, buster));
+}(FINN.carousel, jQuery));
