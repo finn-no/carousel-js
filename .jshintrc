@@ -1,0 +1,27 @@
+{
+  "curly":     true,
+  "newcap":    true,
+  "noarg":     true,
+  "eqeqeq":    true,
+  "eqnull":    true,
+  "undef":     true,
+  "nonew":     true,
+  "trailing":  true,
+  "immed":     true,
+  "es5":       true,
+  "node":      true,
+  "jquery":    true,
+  "validthis": true,
+  "predef": [
+    "describe",
+    "it",
+    "before",
+    "beforeEach",
+    "after",
+    "afterEach",
+    "FINN",
+    "document",
+    "buster",
+    "_"
+  ]
+}
