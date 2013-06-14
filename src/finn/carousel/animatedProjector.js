@@ -1,8 +1,9 @@
+/*! carousel-js - 2013-06-14. Copyright (c) 2013 FINN.no AS - http://finn.no/; Licensed MIT */
 FINN.carousel = FINN.carousel || {};
 
 (function (C, $, B) {
     "use strict";
-    
+
     var div = FINN.elementBuilder("div");
 
     C.animatedProjector = {

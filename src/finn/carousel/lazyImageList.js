@@ -1,5 +1,7 @@
+/*! carousel-js - 2013-06-14. Copyright (c) 2013 FINN.no AS - http://finn.no/; Licensed MIT */
 (function (C, $) {
     "use strict";
+    
     function childAt(element, index) {
         return $(element).children().get(index);
     }
