@@ -32,5 +32,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-jstestdriver');
 
-  grunt.registerTask('default', ['jshint', 'uglify', 'jstestdriver', ]);
+  grunt.registerTask('default', ['jshint', 'jstestdriver', 'uglify']);
 };
