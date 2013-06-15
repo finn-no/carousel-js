@@ -1,6 +1,14 @@
 {
   "name": "carousel",
   "version": "1.0.0",
+  "description": "Multi-purpose carousel JavaScript widget",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/finn-no/carousel-js"
+  },
+  "scripts": {
+    "test": "grunt jstestdriver -v"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-jshint": "~0.1.1",
