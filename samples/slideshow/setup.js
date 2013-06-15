@@ -1,4 +1,4 @@
-(function($,carousel){
+(function(carousel){
 
     var images = document.querySelector("[data-carousel-itemList='albumPhotos']");
     var imageList = carousel.lazyImageList.create(images);
@@ -30,4 +30,4 @@
     carousel.setupSlideshow(controller, 1800);
     controller.show();
 
-}(jQuery, FINN.carousel));
+}(FINN.carousel));

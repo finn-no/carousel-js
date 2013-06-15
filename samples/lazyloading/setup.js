@@ -1,4 +1,4 @@
-(function($,carousel){
+(function(carousel){
 
     var images = document.querySelector("[data-carousel-itemList='albumPhotos']");
     var imageList = carousel.lazyImageList.create(images);
@@ -32,4 +32,4 @@
         images.parentNode.insertBefore(imageCarousel, images);
     }
     images.style.display = "none";
-}(jQuery, FINN.carousel));
+}(FINN.carousel));

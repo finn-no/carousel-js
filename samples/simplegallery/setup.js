@@ -1,4 +1,4 @@
-(function($,carousel){
+(function(carousel){
 
     var images = document.querySelector("[data-carousel-itemList='albumPhotos']");
     var imageList = carousel.elementList.create(images);
@@ -33,7 +33,7 @@
         list: imageList,
         label: "{0} / {1}",
         root: document.querySelector("[data-carousel-indexDisplayer='albumPhotos']")
-    }); 
+    });
 
     carousel.setupKeyboardNavigation(controller);
     carousel.setupTouchNavigation(controller, imageCarousel);
@@ -41,4 +41,4 @@
         images.parentNode.insertBefore(imageCarousel, images);
     }
     images.style.display = "none";
-}(jQuery, FINN.carousel));
+}(FINN.carousel));

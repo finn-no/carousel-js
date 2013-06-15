@@ -22,6 +22,7 @@
     "afterEach",
     "FINN",
     "document",
+    "navigator",
     "bane",
     "sinon",
     "testCase",
