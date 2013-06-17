@@ -3,4 +3,4 @@ node_js:
   - "0.8"
 before_script:
   - npm install -g grunt-cli
-  - java -jar node_modules/grunt-jstestdriver/lib/jstestdriver.jar --port 5555
+  - java -jar node_modules/grunt-jstestdriver/lib/jstestdriver.jar --port 5555 &
