@@ -5,6 +5,8 @@ It works in any browser on any device.
 
 Your pull requests are more than welcome and we're happy for any contribution.
 
+[https://api.travis-ci.org/finn-no/carousel-js.png](https://api.travis-ci.org/finn-no/)
+
 ## Add an image gallery to your app
 Below is a sample of how you create a simple image carousel.
 Add the script to the bottom of the page
