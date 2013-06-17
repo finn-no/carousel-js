@@ -1,11 +1,12 @@
 /**
- * Sinon.JS 1.3.1, 2012/01/04
+ * Sinon.JS 1.7.1, 2013/05/07
  *
  * @author Christian Johansen (christian@cjohansen.no)
+ * @author Contributors: https://github.com/cjohansen/Sinon.JS/blob/master/AUTHORS
  *
  * (The BSD License)
  * 
- * Copyright (c) 2010-2011, Christian Johansen, christian@cjohansen.no
+ * Copyright (c) 2010-2013, Christian Johansen, christian@cjohansen.no
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without modification,
@@ -32,7 +33,6 @@
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-"use strict";
 /*global sinon, setTimeout, setInterval, clearTimeout, clearInterval, Date*/
 /**
  * Helps IE run the fake timers. By defining global functions, IE allows
@@ -45,7 +45,7 @@
  * @author Christian Johansen (christian@cjohansen.no)
  * @license BSD
  *
- * Copyright (c) 2010-2011 Christian Johansen
+ * Copyright (c) 2010-2013 Christian Johansen
  */
 function setTimeout() {}
 function clearTimeout() {}
@@ -73,7 +73,7 @@ Date = sinon.timers.Date;
  * @author Christian Johansen (christian@cjohansen.no)
  * @license BSD
  *
- * Copyright (c) 2010-2011 Christian Johansen
+ * Copyright (c) 2010-2013 Christian Johansen
  */
 function XMLHttpRequest() {}
 

@@ -4,7 +4,7 @@ window.alert = function alert(msg) {
     jstestdriver.console.log(msg);
 };
 
-buster.assertions.add("exceptionWithMessage", {
+referee.add("exceptionWithMessage", {
     assert: function (func, message) {
         try {
             func();
