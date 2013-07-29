@@ -96,7 +96,6 @@ The carousel package contains numerous components which can be packaged together
 
 # Dependencies
 
-* [Underscore](http://underscorejs.org/)
 * [Bane](https://github.com/busterjs/bane/blob/master/lib/bane.js)
 * [jQuery 1.7 and up](http://jquery.com)
 
