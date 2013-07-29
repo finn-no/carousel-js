@@ -20,10 +20,6 @@ module.exports = function(grunt) {
       }
     },
     jstestdriver: {
-      options: {
-        canFail: true,
-        verbose: true
-      },
       files: ["test/resources/jsTestDriver.conf"]
     }
   });
