@@ -1,7 +1,7 @@
 /*! carousel-js - 2013-06-14. Copyright (c) 2013 FINN.no AS - http://finn.no/; Licensed MIT */
 FINN.carousel = FINN.carousel || {};
 
-(function (C, _) {
+(function (C) {
     "use strict";
 
     C.emptyList = {
@@ -25,4 +25,4 @@ FINN.carousel = FINN.carousel || {};
         contains: function (index) { return false; },
         get: function (index, callback) {}
     };
-}(FINN.carousel, _));
+}(FINN.carousel));
