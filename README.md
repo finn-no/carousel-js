@@ -70,7 +70,15 @@ Feel free to add your samples to this section or let us know if you use it.
 * [Gallery with thumbnail strip](http://www.finn.no/finn/car/used/viewimage?finnkode=41884971) gallery with a simple thumbnail strip
 
 # Building the source
-Working with the carousel all you need to build it is to have [Grunt](http://gruntjs.com/) installed and then just run the simple command:
+###Preparing the workspace
+You will need [Node/NPM](http://nodejs.org/) and [Grunt](http://gruntjs.com/) installed.
+Install required development dependencies:
+
+```cd carousel-js && npm install```
+
+```npm install -g grunt grunt-cli```
+
+Build the project with Grunt.
 
 ```sh
 grunt
