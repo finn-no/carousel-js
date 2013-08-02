@@ -74,14 +74,10 @@ Feel free to add your samples to this section or let us know if you use it.
 You will need [Node/NPM](http://nodejs.org/) and [Grunt](http://gruntjs.com/) installed.
 Install required development dependencies:
 
-```cd carousel-js && npm install```
-
-```npm install -g grunt grunt-cli```
-
-Build the project with Grunt.
-
 ```sh
-grunt
+$ cd carousel-js && npm install
+$ npm install -g grunt grunt-cli
+$ grunt
 ```
 
 This runs tests and puts a new package in your local dist folder, ready to use.
@@ -109,9 +105,15 @@ The carousel package contains numerous components which can be packaged together
 
 Some components rely on jQuery, we are working to lose those as soon as possible.
 
-# Contributors
+# FAQ
+
+**What about AMD support?**
+> The pieces which make up the carousel widget are not AMD modules. However if you have a look in the [samples](samples/amd) directory you can se how to use the widget in an AMD environment
+
+Other module formats can take similar approaches. There are currently no plans to expose the individual modules in the carousel to different module formats.
+
+# Original authors
 
 * [Magnar Sveen](https://github.com/magnars)
 * [Christian Johansen](https://github.com/cjohansen)
 * [Jostein Holje](https://github.com/jstnhlj)
-* [Espen Dall&oslash;kken](https://github.com/leftieFriele)
