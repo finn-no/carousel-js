@@ -108,7 +108,8 @@ Some components rely on jQuery, we are working to lose those as soon as possible
 # FAQ
 
 **What about AMD support?**
-> The pieces which make up the carousel widget are not AMD modules. However if you have a look in the [samples](samples/amd) directory you can se how to use the widget in an AMD environment
+
+The pieces which make up the carousel widget are not AMD modules. However if you have a look in the [samples](samples/amd) directory you can se how to use the widget in an AMD environment
 
 Other module formats can take similar approaches. There are currently no plans to expose the individual modules in the carousel to different module formats.
 
