@@ -1,0 +1,30 @@
+<!doctype HTML>
+<html>
+  <head>
+    <title>Sample image gallery</title>
+    <link rel="stylesheet" href="../css/samples.css">
+  </head>
+  <body>
+    <div class="imagecontainer centerify">
+      <!-- the projector is only used for Internet Explorer -->
+      <div data-carousel-projector="albumPhotos"></div>
+      <!-- Source list of nodes to iterate over -->
+      <div data-carousel-itemList="albumPhotos" class="unselectify">
+        <div><img src="../img/sample1.jpg" alt=""></div>
+        <div><img src="../img/sample2.jpg" alt=""></div>
+        <div><img src="../img/sample3.jpg" alt=""></div>
+        <div><img src="../img/sample4.jpg" alt=""></div>
+        <div><img src="../img/sample5.jpg" alt=""></div>
+        <div><img src="../img/sample6.jpg" alt=""></div>
+        <div><img src="../img/sample7.jpg" alt=""></div>
+      </div>
+      <div data-carousel-indexDisplayer="albumPhotos"></div>
+      <!-- Next / previous navigation -->
+      <div data-carousel-prevNext="albumPhotos">
+        <a class="btn-gallery prev-img prev unselectify" title="Previous"><span class="hidden">Previous</span></a>
+        <a class="btn-gallery next-img next unselectify" title="Next"><span class="hidden">Next</span></a>
+      </div>
+    </div>
+    <script data-main="main" src="requirejs.js"></script>
+  </body>
+</html>
