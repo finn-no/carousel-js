@@ -113,6 +113,10 @@ The pieces which make up the carousel widget are not AMD modules. However if you
 
 Other module formats can take similar approaches. There are currently no plans to expose the individual modules in the carousel to different module formats.
 
+**I get an error with the bind function**
+
+The carousel requires an ES5 shim to be present for browsers which doesn't have the bind function available.
+
 # Original authors
 
 * [Magnar Sveen](https://github.com/magnars)
