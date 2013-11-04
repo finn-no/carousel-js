@@ -1,0 +1,38 @@
+<!doctype HTML>
+<html>
+  <head>
+    <title>Sample carousel with mixed multimedia content</title>
+    <link rel="stylesheet" href="../css/samples.css">
+  </head>
+  <body>
+    <h1>Sample with mixed multimedia content</h1>
+    <div class="imagecontainer centerify">
+      <!-- the projector is only used for Internet Explorer -->
+      <div data-carousel-projector="albumPhotos"></div>
+      <!-- Source list of nodes to iterate over -->
+      <div data-carousel-itemList="finnSpots" class="unselectify">
+        <div>
+          <iframe width="560" height="315" src="//www.youtube.com/embed/cMEL58-kMQU?list=PLf3-3WTrEEqJ60paUmhL2NQLzcHcrzhUB" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div>
+          <img src="http://gjettprisen.finn.no/css/elm/cat.png">
+        </div>
+        <div>
+          <img src="http://hjemmehos.finn.no/filestore/Historien_vr/pusefinn.png?size=388x0&quality=75">
+        </div>
+        <div>
+          <iframe width="560" height="315" src="//www.youtube.com/embed/TSxnfBbRZIE?list=PLf3-3WTrEEqJ60paUmhL2NQLzcHcrzhUB" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div data-carousel-indexDisplayer="albumPhotos"></div>
+        <div data-carousel-prevNext="albumPhotos">
+          <a class="btn-gallery prev-img prev unselectify" title="Previous"><span class="hidden">Previous</span></a>
+          <a class="btn-gallery next-img next unselectify" title="Next"><span class="hidden">Next</span></a>
+        </div>
+      </div>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="../../src/lib/bane/bane.js"></script>
+    <script src="../../dist/carousel-1.0.0.min.js"></script>
+    <script src="setup.js"></script>
+  </body>
+</html>
