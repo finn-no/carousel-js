@@ -12,13 +12,20 @@ module.exports = function(grunt) {
     },
     uglify: {
       options: {
-        banner: '/*! <%=pkg.name%> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %>.' + ' Copyright (c) <%= grunt.template.today("yyyy") %> FINN.no AS - http://finn.no/; Licensed MIT */\n',
-        mangle: false,
-        beautify: true
+        banner: '/*! <%=pkg.name%> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %>.' + ' Copyright (c) <%= grunt.template.today("yyyy") %> FINN.no AS - http://finn.no/; Licensed MIT */\n'
       },
       build: {
         src: ['src/finn/core.js', 'src/finn/elementBuilder.js', 'src/finn/<%=pkg.name%>/**/*.js'],
         dest: 'dist/<%= pkg.name %>-<%=pkg.version%>.min.js'
+      },
+      uncompressed: {
+        options: {
+          compress: false,
+          beautify: true,
+          mangle: false
+        },
+        src: ['src/finn/core.js', 'src/finn/elementBuilder.js', 'src/finn/<%=pkg.name%>/**/*.js'],
+        dest: 'dist/<%= pkg.name %>-<%=pkg.version%>.js'
       }
     },
     jstestdriver: {
@@ -31,4 +38,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-jstestdriver');
 
   grunt.registerTask('default', ['jshint', 'jstestdriver', 'uglify']);
+  grunt.registerTask('build-uncompressed', ['uglify:uncompressed']);
 };
