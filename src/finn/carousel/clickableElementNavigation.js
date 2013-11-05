@@ -1,5 +1,5 @@
 /*! carousel-js - 2013-06-14. Copyright (c) 2013 FINN.no AS - http://finn.no/; Licensed MIT */
-(function (C) {
+(function (C, $) {
     "use strict";
     
     C.setupClickableElementNavigation = function (controller, root, element, selector, getElementIndexOverride) {
@@ -22,4 +22,4 @@
                 eq(index).addClass(selected);
         });
     };
-}(FINN.carousel));
+}(FINN.carousel, jQuery));

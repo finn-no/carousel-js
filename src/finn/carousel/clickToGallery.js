@@ -2,7 +2,7 @@
 FINN.carousel = FINN.carousel || {};
 
 // Add gallery url in markup:  <img data-gallery-url="">
-(function (C) {
+(function (C, $) {
 	"use strict";
 
     function sendToGallery(e) {
@@ -16,4 +16,4 @@ FINN.carousel = FINN.carousel || {};
         $(carousel).on("click", sendToGallery);
     };
 
-}(FINN.carousel));
+}(FINN.carousel, jQuery));
