@@ -16,6 +16,7 @@
             this.controller.on("show", this.listener);
             this.next = $(this.element).find(".next").get(0);
             this.prev = $(this.element).find(".prev").get(0);
+            this.fader = "opacity25";
 
             C.setupClickNavigation(this.controller, list, this.element);
         },
@@ -34,20 +35,20 @@
         },
 
         "test should fade out prev when at first element": function () {
-            assert.className(this.prev, "faded");
+            assert.className(this.prev, this.fader);
         },
 
         "test should fade prev in again when at second element": function () {
             this.controller.next();
 
-            refute.className(this.prev, "faded");
+            refute.className(this.prev, this.fader);
         },
 
         "test should fade out prev when going back to first": function () {
             this.controller.next();
             this.controller.prev();
 
-            assert.className(this.prev, "faded");
+            assert.className(this.prev, this.fader);
         },
 
         "test should fade out next when at last element": function () {
@@ -55,7 +56,7 @@
             var controller = C.controller.create(list);
             C.setupClickNavigation(controller, list, this.element);
 
-            assert.className(this.next, "faded");
+            assert.className(this.next, this.fader);
         },
 
         "test should never fade out next for unbounded lists": function () {
@@ -63,7 +64,7 @@
             var controller = C.controller.create(list);
             C.setupClickNavigation(controller, list, this.element);
 
-            refute.className(this.next, "faded");
+            refute.className(this.next, this.fader);
         }
     }));
 

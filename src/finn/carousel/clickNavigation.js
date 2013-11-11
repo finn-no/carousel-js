@@ -4,9 +4,10 @@ FINN.carousel = FINN.carousel || {};
 (function ($, C) {
     "use strict";
     
-    C.setupClickNavigation =  function (controller, list, view) {
+    C.setupClickNavigation =  function (controller, list, view, faderClass) {
         var $next = $(view).find(".next");
         var $prev = $(view).find(".prev");
+        var fader = faderClass || ("opacity25");
 
         $next.bind("click", function (e) {
             e.preventDefault();
@@ -19,8 +20,8 @@ FINN.carousel = FINN.carousel || {};
         });
 
         var updateLinkBoundaries = function (index) {
-            $prev.toggleClass("faded", index === 0);
-            $next.toggleClass("faded", list.isBounded && index >= list.size() - 1);
+            $prev.toggleClass(fader, index === 0);
+            $next.toggleClass(fader, list.isBounded && index >= list.size() - 1);
         };
 
         controller.on("show", updateLinkBoundaries);
