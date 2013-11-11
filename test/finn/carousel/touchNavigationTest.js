@@ -2,95 +2,101 @@
 (function (C) {
     "use strict";
 
-    function touchEvent(x, y) {
-        var touches = [ { pageX: x, pageY: y || 100 } ];
-        return {
-            touches: touches,
-            targetTouches: touches,
-            preventDefault: sinon.stub()
-        };
-    }
+    describe("TouchNavigationTest", function(){
+        var listener;
+        var touchStartHandler;
+        var touchMoveHandler;
 
-    testCase("TouchNavigationTest", sinon.testCase({
-        setUp: function () {
-            this.element = { addEventListener: this.stub() };
+        function createTouchEvent(x, y) {
+            var touches = [ { pageX: x, pageY: y || 100 } ];
+            return {
+                touches: touches,
+                targetTouches: touches,
+                preventDefault: sinon.stub()
+            };
+        }
 
-            this.controller = C.controller.create({
-                contains: this.stub().returns(true)
+
+        beforeEach(function () {
+            var element = { addEventListener: sinon.stub() };
+
+            var controller = C.controller.create({
+                contains: sinon.stub().returns(true)
             });
-            this.controller.show(1);
+            controller.show(1);
 
-            this.listener = this.spy();
-            this.controller.on("show", this.listener);
+            listener = sinon.spy();
+            controller.on("show", listener);
 
-            C.setupTouchNavigation(this.controller, this.element);
+            C.setupTouchNavigation(controller, element);
 
-            this.touchStartHandler = this.element.addEventListener.getCall(0).args[1];
-            this.touchMoveHandler = this.element.addEventListener.getCall(1).args[1];
+            touchStartHandler = element.addEventListener.getCall(0).args[1];
+            touchMoveHandler = element.addEventListener.getCall(1).args[1];
 
-            this.touchStartHandler(touchEvent(100, 100));
-        },
+            touchStartHandler(createTouchEvent(100, 100));
+        });
 
-        "test should show for touch event over treshold": function () {
-            this.touchMoveHandler(touchEvent(70));
+        it("should show for touch event over treshold", function () {
+            touchMoveHandler(createTouchEvent(70));
 
-            assert.calledOnceWith(this.listener, 2);
-        },
+            assert.calledOnceWith(listener, 2);
+        });
 
-        "test should not show if movement below threshold": function () {
-            this.touchMoveHandler(touchEvent(80));
+        it("should not show if movement below threshold", function () {
+            touchMoveHandler(createTouchEvent(80));
 
-            refute.called(this.listener);
-        },
+            refute.called(listener);
+        });
 
-        "test should show if several movements exceed threshold": function () {
-            this.touchMoveHandler(touchEvent(80));
-            this.touchMoveHandler(touchEvent(60));
+        it("should show if several movements exceed threshold", function () {
+            touchMoveHandler(createTouchEvent(80));
+            touchMoveHandler(createTouchEvent(60));
 
-            assert.calledOnceWith(this.listener, 2);
-        },
+            assert.calledOnceWith(listener, 2);
+        });
 
-        "test should not register as swipe if vertical swipe": function () {
-            this.touchMoveHandler(touchEvent(70, 60));
+        it("should not register as swipe if vertical swipe", function () {
+            touchMoveHandler(createTouchEvent(70, 60));
 
-            refute.called(this.listener);
-        },
+            refute.called(listener);
+        });
 
-        "test should not prevent default when vertical swipe": function () {
-            var event = touchEvent(70, 60);
-            this.touchMoveHandler(event);
+        it("should not prevent default when vertical swipe", function () {
+            var event = createTouchEvent(70, 60);
+            touchMoveHandler(event);
             
             refute.called(event.preventDefault);
-        },
+        });
 
-        "test should prevent default when horizontal swipe": function () {
-            var event = touchEvent(130);
-            this.touchMoveHandler(event);
+        it("should prevent default when horizontal swipe", function () {
+            var event = createTouchEvent(130);
+            touchMoveHandler(event);
             
             assert.calledOnce(event.preventDefault);
-        },
+        });
 
-        "test should show previous image if right swipe": function () {
-            this.touchMoveHandler(touchEvent(130));
+        it("should show previous image if right swipe", function () {
+            touchMoveHandler(createTouchEvent(130));
 
-            assert.calledOnceWith(this.listener, 0);
-        },
+            assert.calledOnceWith(listener, 0);
+        });
 
-        "test should not swipe with multiple touches": function () {
-            var event = touchEvent(130);
+        it("should not swipe with multiple touches", function () {
+            var event = createTouchEvent(130);
             event.touches.push({ pageX: 40, pageY: 30 });
-            this.touchMoveHandler(event);
+            touchMoveHandler(event);
 
-            refute.called(this.listener);
-        },
+            refute.called(listener);
+        });
 
-        "test should not swipe if there was multiple touches": function () {
-            var event = touchEvent(120);
+        it("should not swipe if there was multiple touches", function () {
+            var event = createTouchEvent(120);
             event.touches.push({ pageX: 40, pageY: 30 });
-            this.touchMoveHandler(event);
-            this.touchMoveHandler(touchEvent(140));
+            touchMoveHandler(event);
+            touchMoveHandler(createTouchEvent(140));
 
-            refute.called(this.listener);
-        }
-    }));
+            refute.called(listener);
+        });
+    });
+
 }(FINN.carousel));

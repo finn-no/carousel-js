@@ -1,64 +1,63 @@
 /*! carousel-js - 2013-06-14. Copyright (c) 2013 FINN.no AS - http://finn.no/; Licensed MIT */
-(function (C) {
+(function (C, sinon) {
     "use strict";
-    testCase("EmptyListTest", sinon.testCase({
-
-        "test should create usable data object": function () {
+    describe("EmptyListTest", function(){
+        it("should create usable data object", function () {
             var list = C.emptyList.create();
             assert.isFunction(list.contains);
             assert.isFunction(list.get);
-        },
+        });
 
-        "test contains nothing by default": function () {
+        it("contains nothing by default", function () {
             var list = C.emptyList.create();
             refute(list.contains(0));
             refute(list.contains(1));
             refute(list.contains(100));
-        },
+        });
 
-        "test should not be bounded": function () {
+        it("should not be bounded", function () {
             var list = C.emptyList.create();
             refute(list.isBounded);
-        },
+        });
 
-        "test should have size 0": function () {
+        it("should have size 0", function () {
             var list = C.emptyList.create();
             assert.equals(list.size(), 0);
-        },
+        });
 
-        "test provides custom contains implementation": function () {
+        it("provides custom contains implementation", function () {
             var list = C.emptyList.create({
-                contains: this.stub().returns(true)
+                contains: sinon.stub().returns(true)
             });
 
             assert(list.contains(0));
             assert(list.contains(1));
-        },
+        });
 
-        "test default get does not call back": function () {
+        it("default get does not call back", function () {
             var list = C.emptyList.create();
-            var callback = this.spy();
+            var callback = sinon.spy();
             list.get(0, callback);
             refute.called(callback);
-        },
+        });
 
-        "test default get converts return value to callback": function () {
+        it("default get converts return value to callback", function () {
             var list = C.emptyList.create({
-                get: this.stub().returns(42)
+                get: sinon.stub().returns(42)
             });
-            var callback = this.spy();
+            var callback = sinon.spy();
             list.get(0, callback);
             assert.calledOnceWith(callback, 42);
-        },
+        });
 
-        "test does not interfere with get method that invokes callback": function () {
+        it("does not interfere with get method that invokes callback", function () {
             var list = C.emptyList.create({
-                get: this.stub().yields(73)
+                get: sinon.stub().yields(73)
             });
-            var callback = this.spy();
+            var callback = sinon.spy();
             list.get(12, callback);
             assert.calledOnceWith(callback, 73);
-        }
+        });
 
-    }));
-}(FINN.carousel));
+    });
+}(FINN.carousel, sinon));

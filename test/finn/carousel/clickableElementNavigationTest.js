@@ -1,78 +1,44 @@
 /*! carousel-js - 2013-06-14. Copyright (c) 2013 FINN.no AS - http://finn.no/; Licensed MIT */
-(function (C) {
+(function (C, sinon) {
     "use strict";
-    testCase("ClickableElementNavigationTest", sinon.testCase({
-        setUp: function () {
-            /*:DOC thumbs = <div>
-               <img src="catler_thumb.png">
-               <img src="catlin_thumb.png">
-               <img src="lolcat_thumb.png">
-               <img src="catnip_thumb.png">
-             </div>*/
+    describe("ClickableElementNavigationTest", function(){
+        var catler;
+        var catlin;
+        var lolcat;
+        var catnip;
+        var thumbs;
+        var listener;
+        var controller;
 
-            this.catler = $(this.thumbs).children().get(0);
-            this.catlin = $(this.thumbs).children().get(1);
-            this.lolcat = $(this.thumbs).children().get(2);
-            this.catnip = $(this.thumbs).children().get(3);
+        beforeEach(function () {
+            thumbs = document.createElement("div");
+            thumbs.innerHTML = "<img src=\"catler_thumb.png\">" +
+               "<img src=\"catlin_thumb.png\">" +
+               "<img src=\"lolcat_thumb.png\">" +
+               "<img src=\"catnip_thumb.png\">";
+            document.body.appendChild(thumbs);
 
-            this.controller = C.controller.create({
-                contains: this.stub().returns(true)
+            catler = $(thumbs).children().get(0);
+            catlin = $(thumbs).children().get(1);
+            lolcat = $(thumbs).children().get(2);
+            catnip = $(thumbs).children().get(3);
+
+            controller = C.controller.create({
+                contains: sinon.stub().returns(true)
             });
-            this.controller.show(1);
+            controller.show(1);
 
-            this.listener = this.spy();
-            this.controller.on("show", this.listener);
+            listener = sinon.spy();
+            controller.on("show", listener);
 
-            C.setupClickableElementNavigation(this.controller, this.thumbs, "img");
-        },
+            C.setupClickableElementNavigation(controller, thumbs, "img");
+        });
 
-        "test should show image when thumb is clicked": function () {
-            $(this.lolcat).trigger("click");
+        it("should show image when thumb is clicked", function () {
+            $(lolcat).trigger("click");
 
-            assert.calledOnceWith(this.listener, 2);
-        },
+            assert.calledOnceWith(listener, 2);
+        });
 
-        "test should show correct image": function () {
-            $(this.catnip).trigger("click");
-
-            assert.calledOnceWith(this.listener, 3);
-        },
-
-        "test should highlight image when shown": function () {
-            this.controller.show(2);
-
-            assert.className(this.lolcat, "selectedElement");
-        },
-
-        "test should not highlight previous image": function () {
-            this.controller.show(2);
-            this.controller.show(1);
-            this.controller.show(0);
-
-            assert.className(this.catler, "selectedElement");
-            refute.className(this.catlin, "selectedElement");
-            refute.className(this.lolcat, "selectedElement");
-        },
-
-        "test should unhighlight images when selected is out of bounds": function () {
-            this.controller.show(2);
-            this.controller.show(5);
-
-            refute.className(this.lolcat, "selectedElement");
-        },
-
-        "test should be possible to give custom selector": function () {
-            C.setupClickableElementNavigation(this.controller, this.thumbs, "img", "test");
-            this.controller.show(2);
-
-            assert.className(this.lolcat, "test");
-        },
-
-        "test should be possible to pass in a custom function for selecting the element index in the list": function(){
-            var elementIndexSpy = sinon.spy();
-            C.setupClickableElementNavigation(this.controller, this.thumbs, "img", "test", elementIndexSpy);
-            $(this.thumbs).find("img:first").click();
-            assert.called(elementIndexSpy);
-        }
-    }));
-}(FINN.carousel));
+    });
+}(FINN.carousel, sinon));

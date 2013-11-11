@@ -1,48 +1,51 @@
 /*! carousel-js - 2013-06-14. Copyright (c) 2013 FINN.no AS - http://finn.no/; Licensed MIT */
-(function (C) {
+(function (C, elementBuilder, sinon) {
     "use strict";
-    var div = FINN.elementBuilder("div");
 
-    testCase("OverlayProjectorTest", sinon.testCase({
-        setUp: function () {
-            this.slider = {
+    describe("OverlayProjectorTest", function(){
+        var slider;
+        var controller;
+        var buildDiv = elementBuilder("div");
+        var div;
+        var projector;
+        beforeEach(function () {
+            slider = {
                 tagName: "div",
-                insertBefore: this.spy(),
+                insertBefore: sinon.spy(),
                 get: function (index, callback) {
-                    callback(div("Item #" + index));
+                    callback(buildDiv("Item #" + index));
                 }
             };
-            this.div = document.createElement("div");
-            this.controller = bane.createEventEmitter();
-            this.projector = C.overlayProjector.create(this.controller, this.slider, this.div);
-        },
+            div = document.createElement("div");
+            controller = bane.createEventEmitter();
+            projector = C.overlayProjector.create(controller, slider, div);
+        });
 
-        "test should put first element in frame": function () {
-            var carousel = this.projector.buildCarousel();
+        it("should put first element in frame", function () {
+            projector.buildCarousel();
+            assert.tagName(div.firstChild, "div");
+            assert.equals(div.firstChild.innerHTML, "Item #0");
+        });
 
-            assert.tagName(this.div.firstChild, "div");
-            assert.equals(this.div.firstChild.innerHTML, "Item #0");
-        },
+        it("should replace frame contents on show", function () {
+            projector.buildCarousel();
+            projector.show(1);
 
-        "test should replace frame contents on show": function () {
-            var carousel = this.projector.buildCarousel();
-            this.projector.show(1);
+            assert.equals(div.firstChild.innerHTML, "Item #1");
+        });
 
-            assert.equals(this.div.firstChild.innerHTML, "Item #1");
-        },
+        it("should show item on controller signal", function () {
+            projector.buildCarousel();
+            controller.emit("show", 3);
 
-        "test should show item on controller signal": function () {
-            var carousel = this.projector.buildCarousel();
-            this.controller.emit("show", 3);
+            assert.equals(div.firstChild.innerHTML, "Item #3");
+        });
 
-            assert.equals(this.div.firstChild.innerHTML, "Item #3");
-        },
+        it("should return its view after building carousel", function () {
+            var carousel = projector.buildCarousel();
 
-        "test should return its view after building carousel": function () {
-            var carousel = this.projector.buildCarousel();
+            assert.equals(div, carousel);
+        });
+    });
 
-            assert.equals(this.div, carousel);
-        }
-    }));
-
-}(FINN.carousel));
+}(FINN.carousel, FINN.elementBuilder, sinon));

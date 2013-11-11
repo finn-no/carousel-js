@@ -6,13 +6,26 @@
     "type": "git",
     "url": "https://github.com/finn-no/carousel-js"
   },
+  "issues": "https://github.com/finn-no/carousel-js/issues",
   "scripts": {
-    "test": "grunt jstestdriver -v"
+    "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
   },
+  "phantomVersion": "1.9.0",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-jshint": "~0.1.1",
     "grunt-contrib-uglify": "~0.2.1",
-    "grunt-jstestdriver": "~2.2.0"
+    "grunt-karma": "~0.7.1",
+    "karma": ">=0.10",
+    "karma-chrome-launcher": "~0.1",
+    "karma-jasmine": "~0.1",
+    "karma-firefox-launcher": "~0.1",
+    "karma-safari-launcher": "~0.1",
+    "karma-ie-launcher": "~0.1",
+    "karma-junit-reporter": "~0.1",
+    "karma-coverage": "~0.1",
+    "karma-buster-assertions-plugin": "0.0.5",
+    "buster-sinon": "0.7.0",
+    "karma-sinon": "0.0.1"
   }
 }

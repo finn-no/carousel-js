@@ -1,85 +1,88 @@
 /*! carousel-js - 2013-06-14. Copyright (c) 2013 FINN.no AS - http://finn.no/; Licensed MIT */
-(function (carousel) {
+(function (C, sinon) {
     "use strict";
-    testCase("ControllerTest", sinon.testCase({
-        setUp: function () {
-            this.collection = { contains: this.stub().returns(true) };
-            this.controller = carousel.controller.create(this.collection);
-            this.callback = sinon.spy();
-            this.controller.on("show", this.callback);
-        },
+    describe("ControllerTest", function(){
+        var collection;
+        var controller;
+        var callback;
 
-        "test should show 0 on start": function () {
-            this.controller.start();
+        beforeEach(function () {
+            collection = { contains: sinon.stub().returns(true) };
+            controller = C.controller.create(collection);
+            callback = sinon.spy();
+            controller.on("show", callback);
+        });
 
-            assert.calledOnceWith(this.callback, 0);
-        },
+        it("should show 0 on start", function () {
+            controller.start();
 
-        "test should show given index on start": function () {
-            this.controller.start("5");
+            assert.calledOnceWith(callback, 0);
+        });
 
-            assert.calledOnceWith(this.callback, 5);
-        },
+        it("should show given index on start", function () {
+            controller.start("5");
 
-        "test show emits id to show": function () {
-            this.controller.show(1);
+            assert.calledOnceWith(callback, 5);
+        });
 
-            assert.calledOnceWith(this.callback, 1);
-        },
+        it("show emits id to show", function () {
+            controller.show(1);
 
-        "test show does not emit on index overflow": function () {
-            this.collection.contains.withArgs(4).returns(false);
-            this.controller.show(4);
+            assert.calledOnceWith(callback, 1);
+        });
 
-            refute.called(this.callback);
-        },
+        it("show does not emit on index overflow", function () {
+            collection.contains.withArgs(4).returns(false);
+            controller.show(4);
 
-        "test show does not emit on index underflow": function () {
-            this.collection.contains.withArgs(-1).returns(false);
-            this.controller.show(-1);
+            refute.called(callback);
+        });
 
-            refute.called(this.callback);
-        },
+        it("show does not emit on index underflow", function () {
+            collection.contains.withArgs(-1).returns(false);
+            controller.show(-1);
 
-        "test show does not emit duplicate position": function () {
-            this.controller.show(1);
-            this.controller.show(1);
+            refute.called(callback);
+        });
 
-            assert.calledOnce(this.callback);
-        },
+        it("show does not emit duplicate position", function () {
+            controller.show(1);
+            controller.show(1);
 
-        "test next emits 1 on first call": function () {
-            this.controller.next();
+            assert.calledOnce(callback);
+        });
 
-            assert.calledOnceWith(this.callback, 1);
-        },
+        it("next emits 1 on first call", function () {
+            controller.next();
+            assert.calledOnceWith(callback, 1);
+        });
 
-        "test next advances current index until last index": function () {
-            this.collection.contains.withArgs(3).returns(false);
-            this.controller.next();
-            this.controller.next();
-            this.controller.next();
+        it("next advances current index until last index", function () {
+            collection.contains.withArgs(3).returns(false);
+            controller.next();
+            controller.next();
+            controller.next();
 
-            assert.calledTwice(this.callback);
-            assert.equals(this.callback.getCall(0).args[0], 1);
-            assert.equals(this.callback.getCall(1).args[0], 2);
-        },
+            assert.calledTwice(callback);
+            assert.equals(callback.getCall(0).args[0], 1);
+            assert.equals(callback.getCall(1).args[0], 2);
+        });
 
-        "test prev emits 0 on first call": function () {
-            this.controller.prev();
-            refute.called(this.callback);
-        },
+        it("prev emits 0 on first call", function () {
+            controller.prev();
+            refute.called(callback);
+        });
 
-        "test prev moves index back until 0": function () {
-            this.controller.show(2);
-            this.controller.prev();
-            this.controller.prev();
-            this.controller.prev();
+        it("prev moves index back until 0", function () {
+            controller.show(2);
+            controller.prev();
+            controller.prev();
+            controller.prev();
 
-            assert.calledThrice(this.callback);
-            assert.equals(this.callback.getCall(0).args[0], 2);
-            assert.equals(this.callback.getCall(1).args[0], 1);
-            assert.equals(this.callback.getCall(2).args[0], 0);
-        }
-    }));
-}(FINN.carousel));
+            assert.calledThrice(callback);
+            assert.equals(callback.getCall(0).args[0], 2);
+            assert.equals(callback.getCall(1).args[0], 1);
+            assert.equals(callback.getCall(2).args[0], 0);
+        });
+    });
+}(FINN.carousel, sinon));

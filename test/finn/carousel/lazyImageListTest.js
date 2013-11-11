@@ -1,92 +1,97 @@
 /*! carousel-js - 2013-06-14. Copyright (c) 2013 FINN.no AS - http://finn.no/; Licensed MIT */
-(function (C, $) {
+(function (C, $, sinon) {
     "use strict";
 
-    testCase("LazyImageListTest", sinon.testCase({
-        setUp: function () {
-            this.$ol = $('<ol>'+
-                '<li><img src="catler.png"></li>'+
-                '<li><img data-src="catlin.png"></li>'+
-                '<li><img data-src="catpictures.png"></li>'+
-                '</ol>');
-            this.list = C.lazyImageList.create(this.$ol);
-        },
+    describe("LazyImageListTest", function(){
+        var $ol;
+        var list;
+        beforeEach(function () {
+            $ol = $("<ol>"+
+                "<li><img src=\"catler.png\"></li>"+
+                "<li><img data-src=\"catlin.png\"></li>"+
+                "<li><img data-src=\"catpictures.png\"></li>"+
+                "</ol>");
+            list = C.lazyImageList.create($ol);
+        });
 
-        "test should be an elementList": function () {
+        it("should be an elementList", function () {
             assert.equals(C.lazyImageList.size, C.elementList.size);
-        },
+        });
 
-        "test should should swap data-src with src on get": function () {
-            this.list.get(1, function (el) {
+        it("should should swap data-src with src on get", function () {
+            list.get(1, function (el) {
                 assert.match(el.firstChild.src, "catlin.png");
                 refute.match(el.firstChild.getAttribute("data-src"), "catlin.png");
             });
-        },
+        });
 
-        "test should eagerly fetch the next image too": function () {
-            this.list.get(1, this.stub());
-            var el = this.$ol.find("li:last").get(0);
+        it("should eagerly fetch the next image too", function () {
+            list.get(1, sinon.stub());
+            var el = $ol.find("li:last").get(0);
 
             assert.match(el.firstChild.src, "catpictures.png");
             refute.match(el.firstChild.getAttribute("data-src"), "catpictures.png");
-        },
+        });
 
-        "test should compute on last image": function () {
-            this.list.get(2, this.stub());
-        },
+        it("should compute on last image", function () {
+            list.get(2, sinon.stub());
+        });
 
-        "test should notify callback when image just got loaded": function () {
-            var readyCallback = this.spy();
-            var $notDownloadedImage = this.$ol.find("img:last");
+        it("should notify callback when image just got loaded", function () {
+            var readyCallback = sinon.spy();
+            var $notDownloadedImage = $ol.find("img:last");
 
-            this.list.get(2, readyCallback);
+            list.get(2, readyCallback);
 
             refute.called(readyCallback);
-            $notDownloadedImage.trigger('load');
+            $notDownloadedImage.trigger("load");
             assert.called(readyCallback);
-        },
+        });
 
-        "test should notify callback immediately when image is already downloaded": function () {
-            var readyCallback = this.spy();
+        it("should notify callback immediately when image is already downloaded", function () {
+            var readyCallback = sinon.spy();
 
-            this.list.get(0, readyCallback);
+            list.get(0, readyCallback);
             assert.called(readyCallback);
+        });
+    });
+
+    describe("LazyImageListErrorTest", function(){
+        var $ol;
+        var list;
+
+        function whenCreatingImageListWithErrorHandler (errorCallback) {
+            list = C.lazyImageList.create($ol, errorCallback);
         }
-    }));
 
-    testCase("LazyImageListErrorTest", sinon.testCase({
-        setUp: function () {
-            this.$ol = $('<ol>'+
-                    '<li><img src="catler.png"></li>'+
-                    '<li><img data-src="catlin.png"></li>'+
-                    '<li><img data-src="catpictures.png"></li>'+
-                '</ol>');
-        },
+        beforeEach(function () {
+            $ol = $("<ol>"+
+                "<li><img src=\"catler.png\"></li>"+
+                "<li><img data-src=\"catlin.png\"></li>"+
+                "<li><img data-src=\"catpictures.png\"></li>"+
+            "</ol>");
+        });
 
-        "test should ask errorCallback for alternative image path when image retrieval fails": function () {
-            var errorCallback = this.spy();
-            var $invalidImage = this.$ol.find("img:last");
+        it("should ask errorCallback for alternative image path when image retrieval fails", function () {
+            var errorCallback = sinon.spy();
+            var $invalidImage = $ol.find("img:last");
 
-            this.whenCreatingImageListWithErrorHandler(errorCallback);
-            this.list.get(2);
+            whenCreatingImageListWithErrorHandler(errorCallback);
+            list.get(2);
 
-            $invalidImage.trigger('error');
+            $invalidImage.trigger("error");
             assert.calledWith(errorCallback, "catpictures.png");
-        },
+        });
 
-        "test should use alternative image path from given by errorCallback when image retrieval fails": function () {
-            var errorCallback = this.stub().returns("not-found.png");
-            var $invalidImage = this.$ol.find("img:last");
+        it("should use alternative image path from given by errorCallback when image retrieval fails", function () {
+            var errorCallback = sinon.stub().returns("not-found.png");
+            var $invalidImage = $ol.find("img:last");
 
-            this.whenCreatingImageListWithErrorHandler(errorCallback);
-            this.list.get(2);
+            whenCreatingImageListWithErrorHandler(errorCallback);
+            list.get(2);
 
-            $invalidImage.trigger('error');
+            $invalidImage.trigger("error");
             assert.equals("not-found.png", $invalidImage.attr("src"));
-        },
-
-        whenCreatingImageListWithErrorHandler: function (errorCallback) {
-            this.list = C.lazyImageList.create(this.$ol, errorCallback);
-        }
-    }));
-}(FINN.carousel, jQuery));
+        });
+    });
+}(FINN.carousel, jQuery, sinon));
