@@ -1,5 +1,4 @@
 /*globals TestCase, buster, window, referee */
-var testCase = TestCase;
 
 var assert = referee.assert;
 var refute = referee.refute;

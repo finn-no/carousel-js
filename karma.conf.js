@@ -6,7 +6,6 @@ module.exports = function(config){
         basePath: 'test',
         frameworks: ['jasmine', 'sinon', 'buster-assertions'],
         files: [
-            'lib/vojtajina-jstd-adapter.js',
             '../src/lib/bane/*.js',
             'lib/buster/*.js',
             'lib/sinon/*.js',
