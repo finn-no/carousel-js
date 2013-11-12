@@ -5,7 +5,7 @@ It works in any browser on any device.
 
 Your pull requests are more than welcome and we're happy for any contribution.
 
-![travis status](https://api.travis-ci.org/finn-no/carousel-js.png)
+[![travis status](https://api.travis-ci.org/finn-no/carousel-js.png)](https://travis-ci.org/finn-no/carousel-js/)
 
 ## Add an image gallery to your app
 Below is a sample of how you create a simple image carousel.
