@@ -1,7 +1,12 @@
-var testCase = TestCase;
+/*globals TestCase, buster, window, referee */
+
+var assert = referee.assert;
+var refute = referee.refute;
+
+refereeSinon(referee, sinon);
 
 window.alert = function alert(msg) {
-    jstestdriver.console.log(msg);
+    console.log(msg);
 };
 
 referee.add("exceptionWithMessage", {

@@ -84,14 +84,16 @@ This runs tests and puts a new package in your local dist folder, ready to use.
 
 ## Running tests
 
-Currently all tests are run using [JsTestDriver](https://code.google.com/p/js-test-driver/). Tests use the [Buster assertion library](http://docs.busterjs.org/en/latest/modules/buster-assertions/).
-In order to run the tests you must have Grunt installed and make sure you have the [Grunt JsTestDriver plugin](https://github.com/rickyclegg/grunt-jstestdriver) installed. The configuration is already in the project grunt file.
-
-To run the tests all you need to do is this:
+Currently all tests are run using [Karma runner](https://github.com/karma-runner/karma). Tests use the [Buster assertion library](http://docs.busterjs.org/en/latest/modules/buster-assertions/) and [Jasmine](http://pivotal.github.io/jasmine/) for writing tests. Jasmine was selected due to the fact it helped us move away from JsTestDriver.
 
 ```sh
-$ java -jar node_modules/grunt-jstestdriver/lib/jstestdriver.jar --port 5555
-$ grunt jstestdriver
+
+    $ npm test
+
+    $ grunt karma
+    
+    $ ./node_module/.bin/karma start
+
 ```
 
 # Component

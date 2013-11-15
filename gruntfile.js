@@ -28,15 +28,19 @@ module.exports = function(grunt) {
         dest: 'dist/<%= pkg.name %>-<%=pkg.version%>.js'
       }
     },
-    jstestdriver: {
-      files: ["test/resources/jsTestDriver.conf"]
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js',
+        singleRun: true,
+        browsers: ['PhantomJS']
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-jstestdriver');
+  grunt.loadNpmTasks('grunt-karma');
 
-  grunt.registerTask('default', ['jshint', 'jstestdriver', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'karma', 'uglify']);
   grunt.registerTask('build-uncompressed', ['uglify:uncompressed']);
 };

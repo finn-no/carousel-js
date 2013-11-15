@@ -1,72 +1,78 @@
 /*! carousel-js - 2013-06-14. Copyright (c) 2013 FINN.no AS - http://finn.no/; Licensed MIT */
 (function (C) {
     "use strict";
-    testCase("IndexDisplayerTest", sinon.testCase({
-        setUp: function () {
-            this.list = {
+    describe("IndexDisplayerTest", function(){
+        var list;
+        var controller;
+        var root;
+        var params;
+
+        beforeEach(function () {
+            list = {
                 isBounded: true,
                 size: function () { return 5; },
                 contains: function () { return true; }
             };
-            this.controller = C.controller.create(this.list);
-            this.root = document.createElement("div");
-            this.params = {
+            controller = C.controller.create(list);
+            root = document.createElement("div");
+            params = {
                 type: "Bilde",
-                list: this.list,
-                controller: this.controller,
-                root: this.root
+                list: list,
+                controller: controller,
+                root: root
             };
-        },
+        });
 
-        "test should whine if given no params": function () {
+        it("should whine if given no params", function () {
             assert.exception(function () {
                 C.setupIndexDisplayer();
             });
-        },
+        });
 
-        "test should not show upper bound for unbounded lists": function () {
-            this.list.isBounded = false;
-            C.setupIndexDisplayer(this.params);
+        it("should not show upper bound for unbounded lists", function () {
+            list.isBounded = false;
+            C.setupIndexDisplayer(params);
 
-            assert.match(this.root.innerHTML, "Bilde 1");
-            refute.match(this.root.innerHTML, "Bilde 1 av 5");
-        },
+            assert.match(root.innerHTML, "Bilde 1");
+            refute.match(root.innerHTML, "Bilde 1 av 5");
+        });
 
-        "test should show index in root": function () {
-            C.setupIndexDisplayer(this.params);
+        it("should show index in root", function () {
+            C.setupIndexDisplayer(params);
 
-            assert.match(this.root.innerHTML, "Bilde 1 av 5");
-        },
+            assert.match(root.innerHTML, "Bilde 1 av 5");
+        });
 
-        "test should display correct current image index": function () {
-            this.controller.currentId = 1;
-            C.setupIndexDisplayer(this.params);
+        it("should display correct current image index", function () {
+            controller.currentId = 1;
+            C.setupIndexDisplayer(params);
 
-            assert.match(this.root.innerHTML, "Bilde 2 av 5");
-        },
+            assert.match(root.innerHTML, "Bilde 2 av 5");
+        });
 
-        "test should update index on show": function () {
-            C.setupIndexDisplayer(this.params);
-            this.controller.next();
+        it("should update index on show", function () {
+            C.setupIndexDisplayer(params);
+            controller.next();
 
-            assert.match(this.root.innerHTML, "Bilde 2 av 5");
-        },
+            assert.match(root.innerHTML, "Bilde 2 av 5");
+        });
 
-        "test should provide for passing in custom label patterns": function () {
-            var labelOverrideParams = this.params;
+        it("should provide for passing in custom label patterns", function () {
+            var labelOverrideParams = params;
 
             labelOverrideParams.label = "Videoer {0} av {1}";
-            C.setupIndexDisplayer(this.params);
-            assert.match(this.root.innerHTML, "Videoer 1 av 5");
+            C.setupIndexDisplayer(params);
+            assert.match(root.innerHTML, "Videoer 1 av 5");
 
             labelOverrideParams.label = "Totalt ant. videoer {1}";
-            C.setupIndexDisplayer(this.params);
-            assert.match(this.root.innerHTML, "Totalt ant. videoer 5");
+            C.setupIndexDisplayer(params);
+            assert.match(root.innerHTML, "Totalt ant. videoer 5");
 
             labelOverrideParams.label = "Video nr {0}";
-            C.setupIndexDisplayer(this.params);
-            assert.match(this.root.innerHTML, "Video nr 1");
+            C.setupIndexDisplayer(params);
+            assert.match(root.innerHTML, "Video nr 1");
 
-        }
-    }));
+        });
+    });
+
 }(FINN.carousel));

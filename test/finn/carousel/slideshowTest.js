@@ -1,25 +1,29 @@
 /*! carousel-js - 2013-06-14. Copyright (c) 2013 FINN.no AS - http://finn.no/; Licensed MIT */
-(function (carousel) {
+(function (C, sinon, bane) {
     "use strict";
-    var C = FINN.carousel || {};
-    testCase("Slideshow", sinon.testCase({
-        setUp: function () {
-            this.next = sinon.spy();
-            this.controller = bane.createEventEmitter();
-            this.controller.next = this.next;
-            this.clock = sinon.useFakeTimers();
-        },
+    describe("Slideshow", function(){
+        var next;
+        var controller;
+        var clock;
 
-        "test should call next on controller": function () {
-            C.setupSlideshow(this.controller, 500);
-            refute.called(this.next);
+        beforeEach(function () {
+            next = sinon.spy();
+            controller = bane.createEventEmitter();
+            controller.next = next;
+            clock = sinon.useFakeTimers();
+        });
 
-            this.controller.emit("show");
+        it("should call next on controller", function () {
+            C.setupSlideshow(controller, 500);
+            refute.called(next);
 
-            this.clock.tick(499);
-            refute.called(this.next);
-            this.clock.tick(1);
-            assert.calledOnce(this.next);
-        }
-    }));
-}(FINN.carousel));
+            controller.emit("show");
+
+            clock.tick(499);
+            refute.called(next);
+            clock.tick(1);
+            assert.calledOnce(next);
+        });
+    });
+
+}(FINN.carousel, sinon, bane));
