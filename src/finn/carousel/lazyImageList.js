@@ -9,32 +9,32 @@
     function activateDataSrc(index, readyCallback) {
         if (!this.contains(index)) { return; }
         var node = childAt(this.element, index);
-        var img = $(node).find("img").get(0);
-        var dataSrc = img.getAttribute("data-src");
+        var srcNode = $(node).find("img, iframe").get(0);
+        var dataSrc = srcNode.getAttribute("data-src");
         if (dataSrc) {
-            notifyReadyWhenLoaded(img, node, readyCallback);
-            downloadAlternativeImageWhenNotFound.call(this, img);
+            notifyReadyWhenLoaded(srcNode, node, readyCallback);
+            downloadAlternativeImageWhenNotFound.call(this, srcNode);
 
-            img.src = dataSrc;
-            img.setAttribute("data-src", "");
+            srcNode.src = dataSrc;
+            srcNode.setAttribute("data-src", "");
         } else if (readyCallback !== undefined) {
             readyCallback($(node).clone().get(0));
         }
     }
 
-    function notifyReadyWhenLoaded(img, node, readyCallback) {
+    function notifyReadyWhenLoaded(srcDomNode, node, readyCallback) {
         if (readyCallback === undefined) { return; }
 
-        $(img).one('load', function () {
+        $(srcDomNode).one('load', function () {
             readyCallback($(node).clone().get(0));
         });
     }
 
-    function downloadAlternativeImageWhenNotFound(img) {
+    function downloadAlternativeImageWhenNotFound(srcDomNode) {
         if (this.errorCallback === undefined) { return; }
         var resolver = this.errorCallback;
 
-        $(img).one('error', function() {
+        $(srcDomNode).one('error', function() {
             var alternativePath = resolver(this.getAttribute("src"));
             if (alternativePath !== undefined) {
                 this.src = alternativePath;
@@ -42,7 +42,7 @@
         });
     }
 
-    C.lazyImageList = FINN.compose(C.elementList, {
+    C.lazyImageList = C.lazyElementList = FINN.compose(C.elementList, {
         create: function (element, errorCallback) {
             return FINN.compose(this, {
                 element: element,

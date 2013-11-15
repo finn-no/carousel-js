@@ -18,7 +18,7 @@
             assert.equals(C.lazyImageList.size, C.elementList.size);
         });
 
-        it("should should swap data-src with src on get", function () {
+        it("should swap data-src with src on get for an img", function () {
             list.get(1, function (el) {
                 assert.match(el.firstChild.src, "catlin.png");
                 refute.match(el.firstChild.getAttribute("data-src"), "catlin.png");
@@ -54,6 +54,39 @@
             list.get(0, readyCallback);
             assert.called(readyCallback);
         });
+
+    });
+    
+    describe("Lazy anything list", function(){
+        var list;
+        var listDom;
+        beforeEach(function(){
+            listDom = document.createElement("div");
+            listDom.innerHTML = "<div><iframe data-src=\"somesite.com\"></iframe></div>" +
+                "<div><iframe data-src=\"some-other-site.com\"></iframe></div>" +
+                "<div><iframe data-src=\"some-different-site.com\"></iframe></div>";
+            list = C.lazyImageList.create(listDom);
+        });
+        
+        it("should swap data-src with src on get for an iframe", function(){
+            list.get(1, function (el) {
+                assert.match(el.firstChild.src, "somesite.com");
+                refute.match(el.firstChild.getAttribute("data-src"), "some-other-site.com");
+            });
+        });
+
+        it("should eagerly fetch the next image too", function () {
+            list.get(1, sinon.stub());
+            var el = $(listDom).find("div:last").get(0);
+
+            assert.match(el.firstChild.src, "some-different-site.com");
+            refute.match(el.firstChild.getAttribute("data-src"), "some-different-site.com");
+        });
+
+        it("should expose the new lazy element list object", function(){
+            refute.equals(null, C.lazyElementList);
+        });
+
     });
 
     describe("LazyImageListErrorTest", function(){
