@@ -1,9 +1,3 @@
 language: node_js
 node_js:
   - "0.8"
-before_script:
-  - npm install -g grunt-cli
-  - "java -jar test/lib/JsTestDriver-1.3.3d.jar --config test/resources/jsTestDriver.conf --port 5555 &"
-  - "sleep 3"
-  - "phantomjs test/lib/phantomjs-jstd.js &"
-  - "sleep 3"
