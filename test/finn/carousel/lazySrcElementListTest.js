@@ -2,7 +2,7 @@
 (function (C, $, sinon) {
     "use strict";
 
-    describe("LazyImageListTest", function(){
+    describe("LazySrcElementListTest for images", function(){
         var $ol;
         var list;
         beforeEach(function () {
@@ -57,14 +57,14 @@
 
     });
     
-    describe("Lazy anything list", function(){
+    describe("LazySrcElementListTest for iframe, script or image", function(){
         var list;
         var listDom;
         beforeEach(function(){
             listDom = document.createElement("div");
             listDom.innerHTML = "<div><iframe data-src=\"somesite.com\"></iframe></div>" +
                 "<div><iframe data-src=\"some-other-site.com\"></iframe></div>" +
-                "<div><iframe data-src=\"some-different-site.com\"></iframe></div>";
+                "<div><script type=\"text/javascript\" data-src=\"plopp.js\"></script></div>";
             list = C.lazyImageList.create(listDom);
         });
         
@@ -75,25 +75,25 @@
             });
         });
 
-        it("should eagerly fetch the next image too", function () {
+        it("should eagerly fetch the next element too", function () {
             list.get(1, sinon.stub());
             var el = $(listDom).find("div:last").get(0);
 
-            assert.match(el.firstChild.src, "some-different-site.com");
-            refute.match(el.firstChild.getAttribute("data-src"), "some-different-site.com");
+            assert.match(el.firstChild.src, "plopp.js");
+            refute.match(el.firstChild.getAttribute("data-src"), "plopp.js");
         });
 
         it("should expose the new lazy element list object", function(){
-            refute.equals(null, C.lazyElementList);
+            refute.equals("undefined", typeof C.lazySrcElementList);
         });
 
     });
 
-    describe("LazyImageListErrorTest", function(){
+    describe("LazySrcElementListErrorTest", function(){
         var $ol;
         var list;
 
-        function whenCreatingImageListWithErrorHandler (errorCallback) {
+        function whenCreatingListWithErrorHandler (errorCallback) {
             list = C.lazyImageList.create($ol, errorCallback);
         }
 
@@ -109,7 +109,7 @@
             var errorCallback = sinon.spy();
             var $invalidImage = $ol.find("img:last");
 
-            whenCreatingImageListWithErrorHandler(errorCallback);
+            whenCreatingListWithErrorHandler(errorCallback);
             list.get(2);
 
             $invalidImage.trigger("error");
@@ -120,7 +120,7 @@
             var errorCallback = sinon.stub().returns("not-found.png");
             var $invalidImage = $ol.find("img:last");
 
-            whenCreatingImageListWithErrorHandler(errorCallback);
+            whenCreatingListWithErrorHandler(errorCallback);
             list.get(2);
 
             $invalidImage.trigger("error");

@@ -9,7 +9,7 @@
     function activateDataSrc(index, readyCallback) {
         if (!this.contains(index)) { return; }
         var node = childAt(this.element, index);
-        var srcNode = $(node).find("img, iframe").get(0);
+        var srcNode = $(node).find("img, iframe, script").get(0);
         var dataSrc = srcNode.getAttribute("data-src");
         if (dataSrc) {
             notifyReadyWhenLoaded(srcNode, node, readyCallback);
@@ -42,7 +42,7 @@
         });
     }
 
-    C.lazyImageList = C.lazyElementList = FINN.compose(C.elementList, {
+    C.lazyImageList = C.lazySrcElementList = FINN.compose(C.elementList, {
         create: function (element, errorCallback) {
             return FINN.compose(this, {
                 element: element,
