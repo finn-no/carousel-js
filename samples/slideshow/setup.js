@@ -1,7 +1,7 @@
 (function(carousel){
 
     var images = document.querySelector("[data-carousel-itemList='albumPhotos']");
-    var imageList = carousel.lazyImageList.create(images);
+    var imageList = carousel.lazySrcElementList.create(images);
     var controller = carousel.loopingController.create(imageList);
 
     var usesOverlayProjector = false;
