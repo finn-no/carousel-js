@@ -51,6 +51,8 @@ Now let's wire up the JS code required to make this thing work. This should be i
     carousel.setupKeyboardNavigation(controller);
     carousel.setupTouchNavigation(controller, imageCarousel);
     sourceImageList.style.display = "none";
+
+    controller.start();
 }(FINN.carousel));
 ```
 
@@ -91,7 +93,7 @@ Currently all tests are run using [Karma runner](https://github.com/karma-runner
     $ npm test
 
     $ grunt karma
-    
+
     $ ./node_module/.bin/karma start
 
 ```

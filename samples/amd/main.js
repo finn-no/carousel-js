@@ -55,4 +55,6 @@ require(['carousel'], function(carousel){
         images.parentNode.insertBefore(imageCarousel, images);
     }
     images.style.display = "none";
+
+    controller.start();
 });

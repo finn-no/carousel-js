@@ -21,8 +21,16 @@
             projector = C.overlayProjector.create(controller, slider, div);
         });
 
-        it("should put first element in frame", function () {
+        it("should not put anything in frame on buildCarousel", function () {
             projector.buildCarousel();
+
+            assert.equals(div.innerHTML, "", "should be empty");
+        });
+
+        it("should put first element in frame on show", function () {
+            projector.buildCarousel();
+            projector.show(0);
+
             assert.tagName(div.firstChild, "div");
             assert.equals(div.firstChild.innerHTML, "Item #0");
         });
