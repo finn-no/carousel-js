@@ -32,4 +32,6 @@
         images.parentNode.insertBefore(imageCarousel, images);
     }
     images.style.display = "none";
+
+    controller.start();
 }(FINN.carousel));
