@@ -23,6 +23,7 @@
             refute.called(next);
             clock.tick(1);
             assert.calledOnce(next);
+            assert.equals(next.thisValues[0], controller);
         });
     });
 
