@@ -8,7 +8,7 @@ FINN.carousel = FINN.carousel || {};
         controller.on("show", function () {
             clearTimeout(timeout);
             timeout = setTimeout(function () {
-                controller.next()
+                controller.next();
             }, interval);
         });
     };

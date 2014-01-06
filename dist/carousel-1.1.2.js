@@ -1,4 +1,4 @@
-/*! carousel - v1.1.0 - 2013-11-16. Copyright (c) 2013 FINN.no AS - http://finn.no/; Licensed MIT */
+/*! carousel - v1.1.2 - 2014-01-06. Copyright (c) 2014 FINN.no AS - http://finn.no/; Licensed MIT */
 var FINN = FINN || {};
 
 (function(F) {
@@ -828,7 +828,6 @@ FINN.carousel = FINN.carousel || {};
             this.controller.on("show", function() {
                 return self.show.apply(self, arguments);
             });
-            this.show(0);
             return this.view;
         },
         show: function(index) {
@@ -945,7 +944,9 @@ FINN.carousel = FINN.carousel || {};
         var timeout;
         controller.on("show", function() {
             clearTimeout(timeout);
-            timeout = setTimeout(controller.next, interval);
+            timeout = setTimeout(function() {
+                controller.next();
+            }, interval);
         });
     };
 })(FINN.carousel);
