@@ -7,8 +7,8 @@ module.exports = function(grunt) {
           'test/finn/**/*.js'
       ],
       options: {
-        jshintrc: '.jshintrc',
-      },
+        jshintrc: '.jshintrc'
+      }
     },
     uglify: {
       options: {
