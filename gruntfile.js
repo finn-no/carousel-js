@@ -16,7 +16,7 @@ module.exports = function(grunt) {
       },
       build: {
         src: ['src/finn/core.js', 'src/finn/elementBuilder.js', 'src/finn/<%=pkg.name%>/**/*.js'],
-        dest: 'dist/<%= pkg.name %>-<%=pkg.version%>.min.js'
+        dest: 'dist/<%= pkg.name %>.min.js'
       },
       uncompressed: {
         options: {
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
           mangle: false
         },
         src: ['src/finn/core.js', 'src/finn/elementBuilder.js', 'src/finn/<%=pkg.name%>/**/*.js'],
-        dest: 'dist/<%= pkg.name %>-<%=pkg.version%>.js'
+        dest: 'dist/<%= pkg.name %>.js'
       }
     },
     karma: {

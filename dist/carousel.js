@@ -1,4 +1,4 @@
-/*! carousel - v1.1.2 - 2014-01-06. Copyright (c) 2014 FINN.no AS - http://finn.no/; Licensed MIT */
+/*! carousel - v1.1.2 - 2014-01-07. Copyright (c) 2014 FINN.no AS - http://finn.no/; Licensed MIT */
 var FINN = FINN || {};
 
 (function(F) {
