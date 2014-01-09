@@ -14,7 +14,9 @@
         var startPosition;
 
         element.addEventListener("touchstart", function (e) {
-            if (e.touches.length > 1) { return; }
+            if (e.touches.length > 1) {
+                return;
+            }
             startPosition = getPosition(e);
         }, false);
 

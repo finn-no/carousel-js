@@ -3,7 +3,7 @@ FINN.carousel = FINN.carousel || {};
 
 (function (C, $) {
     "use strict";
-    
+
     var div = FINN.elementBuilder("div");
     var transition;
 
@@ -99,8 +99,12 @@ FINN.carousel = FINN.carousel || {};
             if (this.animation) {
                 pos.from = parseInt(this.animation.css("left"), 10);
             }
-            if (typeof forcedTo === "number") { pos.to = forcedTo; }
-            if (pos.from < pos.to) { pos.backwards = true; }
+            if (typeof forcedTo === "number") {
+                pos.to = forcedTo;
+            }
+            if (pos.from < pos.to) {
+                pos.backwards = true;
+            }
             return pos;
         },
 

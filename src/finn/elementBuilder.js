@@ -8,7 +8,9 @@
         var args = $.isArray(arguments[0]) ? arguments[0] : arguments;
 
         for (var i = 0, l = args.length; i < l; ++i) {
-            if (args[i]) { fragment.appendChild(args[i]); }
+            if (args[i]) {
+                fragment.appendChild(args[i]);
+            }
         }
 
         return fragment;
@@ -86,7 +88,7 @@
 
     builder.mod = function (moduleType) {
         return div({ className: "mod mod_" + moduleType },
-                   builder.addContent(div({ className: "bd" }),
-                                      [].slice.call(arguments, 1)));
+            builder.addContent(div({ className: "bd" }),
+                [].slice.call(arguments, 1)));
     };
 }(FINN, jQuery));

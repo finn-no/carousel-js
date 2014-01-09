@@ -4,7 +4,7 @@
 
     var div = elementBuilder("div");
 
-    describe("AnimatedProjectorTest", function(){
+    describe("AnimatedProjectorTest", function () {
         var slider;
         var controller;
         var projector;

@@ -2,7 +2,7 @@ FINN.carousel = FINN.carousel || {};
 
 (function (C, $) {
     "use strict";
-    
+
     C.animator = {
         append: function (element) {
             throw new Error("Implement the append method to add element to the animation");

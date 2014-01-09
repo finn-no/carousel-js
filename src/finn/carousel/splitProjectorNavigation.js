@@ -2,7 +2,7 @@
 (function (C, $) {
     "use strict";
 
-    C.setupSplitProjectorNavigation = function(controller, view) {
+    C.setupSplitProjectorNavigation = function (controller, view) {
         $(view).on('click', function (e) {
             var projectorLeft = $(this).offset().left;
             var clickLeft = e.pageX;

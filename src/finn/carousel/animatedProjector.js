@@ -15,7 +15,9 @@ FINN.carousel = FINN.carousel || {};
                 currentId: 0,
                 queue: []
             });
-            controller.on("show", function () { return instance.show.apply(instance, arguments); });
+            controller.on("show", function () {
+                return instance.show.apply(instance, arguments);
+            });
             return instance;
         },
 
@@ -29,13 +31,17 @@ FINN.carousel = FINN.carousel || {};
                 self.viewport.style.position = "relative";
                 self.viewport.style.overflow = "hidden";
                 carousel.appendChild(self.viewport);
-                if (typeof callback === "function") { callback(carousel); }
+                if (typeof callback === "function") {
+                    callback(carousel);
+                }
             });
             return carousel;
         },
 
         show: function (index) {
-            if (!this.isAnimating() && index === this.currentId) { return; }
+            if (!this.isAnimating() && index === this.currentId) {
+                return;
+            }
             var self = this;
             var animComplete = function () {
                 return self.animationComplete.apply(self, [index].concat([].slice.call(arguments)));
@@ -88,9 +94,15 @@ FINN.carousel = FINN.carousel || {};
             var isOverflow = (this.currentId === 0 && targetIndex === lastIndex) ||
                 (this.currentId === lastIndex && targetIndex === 0);
 
-            if (isOverflow && lastIndex > 1) { return targetIndex > 0; }
-            if (targetIndex < this.currentId) { return true; }
-            if (targetIndex > this.currentId) { return false; }
+            if (isOverflow && lastIndex > 1) {
+                return targetIndex > 0;
+            }
+            if (targetIndex < this.currentId) {
+                return true;
+            }
+            if (targetIndex > this.currentId) {
+                return false;
+            }
             return targetIndex < this.currTarget;
         },
 

@@ -2,7 +2,7 @@
 (function (C, elementBuilder, sinon) {
     "use strict";
 
-    describe("OverlayProjectorTest", function(){
+    describe("OverlayProjectorTest", function () {
         var slider;
         var controller;
         var buildDiv = elementBuilder("div");

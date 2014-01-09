@@ -22,11 +22,11 @@ FINN.carousel = FINN.carousel || {};
             this.emit("show", id);
         },
 
-        peek: function(){
+        peek: function () {
             return this.currentId;
         },
 
-        setCurrentId: function(id){
+        setCurrentId: function (id) {
             this.currentId = id;
         },
 

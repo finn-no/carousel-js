@@ -2,14 +2,14 @@
 (function (C, $, sinon) {
     "use strict";
 
-    describe("LazySrcElementListTest for images", function(){
+    describe("LazySrcElementListTest for images", function () {
         var $ol;
         var list;
         beforeEach(function () {
-            $ol = $("<ol>"+
-                "<li><img src=\"catler.png\"></li>"+
-                "<li><img data-src=\"catlin.png\"></li>"+
-                "<li><img data-src=\"catpictures.png\"></li>"+
+            $ol = $("<ol>" +
+                "<li><img src=\"catler.png\"></li>" +
+                "<li><img data-src=\"catlin.png\"></li>" +
+                "<li><img data-src=\"catpictures.png\"></li>" +
                 "</ol>");
             list = C.lazyImageList.create($ol);
         });
@@ -56,19 +56,19 @@
         });
 
     });
-    
-    describe("LazySrcElementListTest for iframe, script or image", function(){
+
+    describe("LazySrcElementListTest for iframe, script or image", function () {
         var list;
         var listDom;
-        beforeEach(function(){
+        beforeEach(function () {
             listDom = document.createElement("div");
             listDom.innerHTML = "<div><iframe data-src=\"somesite.com\"></iframe></div>" +
                 "<div><iframe data-src=\"some-other-site.com\"></iframe></div>" +
                 "<div><script type=\"text/javascript\" data-src=\"plopp.js\"></script></div>";
             list = C.lazyImageList.create(listDom);
         });
-        
-        it("should swap data-src with src on get for an iframe", function(){
+
+        it("should swap data-src with src on get for an iframe", function () {
             list.get(1, function (el) {
                 assert.match(el.firstChild.src, "somesite.com");
                 refute.match(el.firstChild.getAttribute("data-src"), "some-other-site.com");
@@ -83,26 +83,26 @@
             refute.match(el.firstChild.getAttribute("data-src"), "plopp.js");
         });
 
-        it("should expose the new lazy element list object", function(){
+        it("should expose the new lazy element list object", function () {
             refute.equals("undefined", typeof C.lazySrcElementList);
         });
 
     });
 
-    describe("LazySrcElementListErrorTest", function(){
+    describe("LazySrcElementListErrorTest", function () {
         var $ol;
         var list;
 
-        function whenCreatingListWithErrorHandler (errorCallback) {
+        function whenCreatingListWithErrorHandler(errorCallback) {
             list = C.lazyImageList.create($ol, errorCallback);
         }
 
         beforeEach(function () {
-            $ol = $("<ol>"+
-                "<li><img src=\"catler.png\"></li>"+
-                "<li><img data-src=\"catlin.png\"></li>"+
-                "<li><img data-src=\"catpictures.png\"></li>"+
-            "</ol>");
+            $ol = $("<ol>" +
+                "<li><img src=\"catler.png\"></li>" +
+                "<li><img data-src=\"catlin.png\"></li>" +
+                "<li><img data-src=\"catpictures.png\"></li>" +
+                "</ol>");
         });
 
         it("should ask errorCallback for alternative image path when image retrieval fails", function () {

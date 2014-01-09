@@ -1,7 +1,7 @@
 /*! carousel-js - 2013-06-14. Copyright (c) 2013 FINN.no AS - http://finn.no/; Licensed MIT */
 (function (C, sinon) {
     "use strict";
-    describe("ControllerTest", function(){
+    describe("ControllerTest", function () {
         var collection;
         var controller;
         var callback;

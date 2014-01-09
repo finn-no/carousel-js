@@ -2,7 +2,7 @@
 (function (C, sinon) {
     "use strict";
 
-    describe("KeyboardNavigationTest", function(){
+    describe("KeyboardNavigationTest", function () {
         var controller;
         var listener;
         beforeEach(function () {
@@ -25,13 +25,13 @@
 
         it("should show previous when left target key is released", function () {
             $(document).trigger(new jQuery.Event("keyup", { which: 37 }));
-            
+
             assert.calledOnceWith(listener, 0);
         });
 
         it("should not trigger show when target is a form input element", function () {
-            $(document).trigger(new jQuery.Event("keyup", { which: 37 , target: document.createElement("input")}));
-            $(document).trigger(new jQuery.Event("keyup", { which: 37 , target: document.createElement("textarea")}));
+            $(document).trigger(new jQuery.Event("keyup", { which: 37, target: document.createElement("input")}));
+            $(document).trigger(new jQuery.Event("keyup", { which: 37, target: document.createElement("textarea")}));
 
             refute.called(listener);
         });

@@ -1,7 +1,7 @@
 /*! carousel-js - 2013-06-14. Copyright (c) 2013 FINN.no AS - http://finn.no/; Licensed MIT */
 (function (C, sinon) {
     "use strict";
-    describe("EmptyListTest", function(){
+    describe("EmptyListTest", function () {
         it("should create usable data object", function () {
             var list = C.emptyList.create();
             assert.isFunction(list.contains);

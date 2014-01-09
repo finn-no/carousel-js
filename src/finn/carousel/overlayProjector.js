@@ -13,7 +13,9 @@
 
         buildCarousel: function () {
             var self = this;
-            this.controller.on("show", function () { return self.show.apply(self, arguments); });
+            this.controller.on("show", function () {
+                return self.show.apply(self, arguments);
+            });
             return this.view;
         },
 

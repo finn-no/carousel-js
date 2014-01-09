@@ -1,13 +1,13 @@
 /*! carousel-js - 2013-06-14. Copyright (c) 2013 FINN.no AS - http://finn.no/; Licensed MIT */
 (function (elementBuilder) {
     "use strict";
-    
+
     var div = elementBuilder("div");
     var p = elementBuilder("p");
 
-    describe("ElementBuilderTest", function(){
+    describe("ElementBuilderTest", function () {
 
-        it("test should create div element", function(){
+        it("test should create div element", function () {
             assert.tagName(div(), "div");
         });
 
@@ -101,7 +101,7 @@
         });
     });
 
-    describe("ElementBuilderModuleTest", function(){
+    describe("ElementBuilderModuleTest", function () {
         it("test should create .mod div", function () {
             var mod = elementBuilder.mod();
 

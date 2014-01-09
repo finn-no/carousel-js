@@ -1,18 +1,20 @@
 /*! carousel-js - 2013-06-14. Copyright (c) 2013 FINN.no AS - http://finn.no/; Licensed MIT */
 var FINN = FINN || {};
-(function(F){
+(function (F) {
     "use strict";
-	if (typeof Object.create !== "function") {
+    if (typeof Object.create !== "function") {
         Object.create = function (obj) {
-            function Proxy(){}
+            function Proxy() {
+            }
+
             Proxy.prototype = obj;
             return new Proxy();
         };
     }
-    F.create = function(o){
+    F.create = function (o) {
         return Object.create(o);
     };
-	F.compose = function () {
+    F.compose = function () {
         if (arguments.length === 0 || !arguments[0]) {
             throw new TypeError("compose expects at least one object argument");
         }

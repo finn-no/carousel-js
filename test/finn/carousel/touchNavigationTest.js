@@ -2,13 +2,15 @@
 (function (C) {
     "use strict";
 
-    describe("TouchNavigationTest", function(){
+    describe("TouchNavigationTest", function () {
         var listener;
         var touchStartHandler;
         var touchMoveHandler;
 
         function createTouchEvent(x, y) {
-            var touches = [ { pageX: x, pageY: y || 100 } ];
+            var touches = [
+                { pageX: x, pageY: y || 100 }
+            ];
             return {
                 touches: touches,
                 targetTouches: touches,
@@ -64,14 +66,14 @@
         it("should not prevent default when vertical swipe", function () {
             var event = createTouchEvent(70, 60);
             touchMoveHandler(event);
-            
+
             refute.called(event.preventDefault);
         });
 
         it("should prevent default when horizontal swipe", function () {
             var event = createTouchEvent(130);
             touchMoveHandler(event);
-            
+
             assert.calledOnce(event.preventDefault);
         });
 

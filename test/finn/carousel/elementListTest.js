@@ -1,7 +1,7 @@
 /*! carousel-js - 2013-06-14. Copyright (c) 2013 FINN.no AS - http://finn.no/; Licensed MIT */
 (function (C, sinon) {
     "use strict";
-    describe("ElementListTest", function(){
+    describe("ElementListTest", function () {
         var list;
         var ol;
         beforeEach(function () {

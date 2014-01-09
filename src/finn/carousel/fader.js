@@ -3,7 +3,7 @@ FINN.carousel = FINN.carousel || {};
 
 (function (C, $) {
     "use strict";
-    
+
     var div = FINN.elementBuilder("div");
 
     C.fader = FINN.compose(C.animator, {

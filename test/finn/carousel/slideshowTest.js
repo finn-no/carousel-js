@@ -1,7 +1,7 @@
 /*! carousel-js - 2013-06-14. Copyright (c) 2013 FINN.no AS - http://finn.no/; Licensed MIT */
 (function (C, sinon, bane) {
     "use strict";
-    describe("Slideshow", function(){
+    describe("Slideshow", function () {
         var next;
         var controller;
         var clock;

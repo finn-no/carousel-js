@@ -5,10 +5,10 @@
     C.setupClickableElementNavigation = function (controller, root, element, selector, getElementIndexOverride) {
         var selected = selector || "selectedElement";
 
-        var getElementIndex = function(item){
+        var getElementIndex = function (item) {
             return $(item).index();
         };
-        if (getElementIndexOverride){
+        if (getElementIndexOverride) {
             getElementIndex = getElementIndexOverride;
         }
 

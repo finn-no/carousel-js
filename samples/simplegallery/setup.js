@@ -1,4 +1,4 @@
-(function(carousel){
+(function (carousel) {
 
     var images = document.querySelector("[data-carousel-itemList='albumPhotos']");
     var imageList = carousel.elementList.create(images);

@@ -1,7 +1,7 @@
 /*! carousel-js - 2013-06-14. Copyright (c) 2013 FINN.no AS - http://finn.no/; Licensed MIT */
 (function (C, sinon) {
     "use strict";
-    describe("ClickableElementNavigationTest", function(){
+    describe("ClickableElementNavigationTest", function () {
         var catler;
         var catlin;
         var lolcat;
@@ -13,9 +13,9 @@
         beforeEach(function () {
             thumbs = document.createElement("div");
             thumbs.innerHTML = "<img src=\"catler_thumb.png\">" +
-               "<img src=\"catlin_thumb.png\">" +
-               "<img src=\"lolcat_thumb.png\">" +
-               "<img src=\"catnip_thumb.png\">";
+                "<img src=\"catlin_thumb.png\">" +
+                "<img src=\"lolcat_thumb.png\">" +
+                "<img src=\"catnip_thumb.png\">";
             document.body.appendChild(thumbs);
 
             catler = $(thumbs).children().get(0);

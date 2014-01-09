@@ -1,10 +1,10 @@
 /*! carousel-js - 2013-06-14. Copyright (c) 2013 FINN.no AS - http://finn.no/; Licensed MIT */
 FINN.carousel = FINN.carousel || {};
 
-(function(C,$){
+(function (C, $) {
     "use strict";
 
-    C.hasFullscreenSupport = function(){
+    C.hasFullscreenSupport = function () {
         var docElm = document.documentElement;
         if (docElm.requestFullscreen) {
             return true;
@@ -18,7 +18,7 @@ FINN.carousel = FINN.carousel || {};
         return false;
     };
 
-    C.setupFullscreenSupport = function(triggerId, controller){
+    C.setupFullscreenSupport = function (triggerId, controller) {
         var viewFullScreen = document.getElementById(triggerId);
         if (viewFullScreen) {
             viewFullScreen.addEventListener("click", function () {
@@ -27,35 +27,35 @@ FINN.carousel = FINN.carousel || {};
             }, false);
         }
         document.addEventListener("fullscreenchange", function () {
-            if (!document.fullscreen){
+            if (!document.fullscreen) {
                 $("#" + triggerId).show();
             }
         }, false);
 
         document.addEventListener("mozfullscreenchange", function () {
-            if (!document.mozFullScreen){
+            if (!document.mozFullScreen) {
                 $("#" + triggerId).show();
             }
         }, false);
 
         document.addEventListener("webkitfullscreenchange", function () {
-            if (!document.webkitIsFullScreen){
+            if (!document.webkitIsFullScreen) {
                 $("#" + triggerId).show();
             }
         }, false);
 
     };
-    C.setupKeyboardShortcut = function(keyCode){
+    C.setupKeyboardShortcut = function (keyCode) {
         $(document).bind("keyup", function (e) {
             if (e) {
                 console.log(e.which);
-                if (e.which === 70){
+                if (e.which === 70) {
                     enterFullscreen();
                 }
             }
         });
     };
-    function enterFullscreen(){
+    function enterFullscreen() {
         var docElm = document.documentElement;
         if (docElm.requestFullscreen) {
             docElm.requestFullscreen();
