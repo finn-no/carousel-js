@@ -6,12 +6,13 @@
         $(document).bind("keyup", function (e) {
             if (!$(e.target).is(":input")) {
                 switch (e.which) {
-                    case 37:
-                        controller.prev();
-                        break;
-                    case 39:
-                        controller.next();
-                        break;
+
+                case 33:
+                    controller.prev();
+                    break;
+                case 39:
+                    controller.next();
+                    break;
                 }
             }
         });

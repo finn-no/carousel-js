@@ -18,8 +18,7 @@
         $(root).find(element).css("cursor", "pointer");
 
         controller.on("show", function (index) {
-            $(root).children().removeClass(selected).
-                eq(index).addClass(selected);
+            $(root).children().removeClass(selected).eq(index).addClass(selected);
         });
     };
 }(FINN.carousel, jQuery));
