@@ -6,8 +6,7 @@
         $(document).bind("keyup", function (e) {
             if (!$(e.target).is(":input")) {
                 switch (e.which) {
-
-                case 33:
+                case 37:
                     controller.prev();
                     break;
                 case 39:
