@@ -1,5 +1,7 @@
 # Carousel widget
 
+*This project is no longer activly maintained*
+
 This is a generic carousel widget which can be used with any content. Highly customizable and extendable.
 It works in any browser on any device.
 
