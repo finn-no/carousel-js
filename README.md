@@ -111,11 +111,12 @@ The carousel package contains numerous components which can be packaged together
 
 Some components rely on jQuery, we are working to lose those as soon as possible.
 
-# Release checklist
-1. Update version numbers in package.json and bower.json
-2. Run tests and build dist with grunt
-3. Push
-4. Tag release on github
+# How to release
+$ npm test
+$ npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease] 
+$ grunt
+$ git push --follow-tags
+$ npm publish
 
 # FAQ
 
