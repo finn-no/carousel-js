@@ -10,6 +10,9 @@
   "scripts": {
     "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
   },
+  "publishConfig": {
+    "registry": "http://npm.finntech.no/"
+  },
   "phantomVersion": "1.9.0",
   "devDependencies": {
     "grunt": "~0.4.1",
