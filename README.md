@@ -88,7 +88,7 @@ This runs tests and puts a new package in your local dist folder, ready to use.
 
 ## Running tests
 
-Currently all tests are run using [Karma runner](https://github.com/karma-runner/karma). Tests use the [Buster assertion library](http://docs.busterjs.org/en/latest/modules/buster-assertions/) and [Jasmine](http://pivotal.github.io/jasmine/) for writing tests. Jasmine was selected due to the fact it helped us move away from JsTestDriver.
+Currently all tests are run using [Karma runner](https://github.com/karma-runner/karma). Tests use the [Buster assertion library](http://docs.busterjs.org/en/latest/modules/buster-assertions/) and [Jasmine](https://jasmine.github.io/) for writing tests. Jasmine was selected due to the fact it helped us move away from JsTestDriver.
 
 ```sh
 
